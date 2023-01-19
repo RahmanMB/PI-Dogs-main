@@ -78,17 +78,4 @@ router.post("/", async (req, res, next) => {
 	}
 });
 
-// PUT /dogs/:id
-
-// DELETE /dogs/:id
-router.delete("/:id", async (req, res, next) => {
-	const { id } = req.params;
-	try {
-		await Dog.destroy({ where: { id: Number(id) } });
-		res.status(200).json({ message: "Delete dog successfully" });
-	} catch (error) {
-		next(error);
-	}
-});
-
 module.exports = router;
