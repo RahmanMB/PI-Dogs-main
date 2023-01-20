@@ -1,0 +1,29 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+
+.container button {
+	background-color: #242424;
+	color: #fff;
+	border: none;
+	padding: 5px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.container button[disabled] {
+	background-color: #474747;
+	cursor: no-drop;
+}
+.container input {
+	height: 30px;
+	width: 50px;
+	text-align: center;
+	border: 1px solid #242424;
+	border-radius: 5px;
+}
