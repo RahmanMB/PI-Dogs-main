@@ -9,6 +9,7 @@ import {
 	getFilterData,
 	getFilterTemp,
 	orderName,
+	orderWeight,
 } from "../../redux/actions";
 import SearchEngine from "./SearchEngine";
 import Card from "../Details/Card";
@@ -52,14 +53,17 @@ const DogsList = () => {
 
 	const hanldeFilterTempChange = (event) => {
 		const { value } = event.target;
-		console.log(value);
 		dispatch(getFilterTemp(value));
 	};
 
 	const handleOrderNameChange = (event) => {
 		const { value } = event.target;
-		console.log(value);
 		dispatch(orderName(value));
+	};
+
+	const handleOrderWeightChange = (event) => {
+		const { value } = event.target;
+		dispatch(orderWeight(value));
 	};
 
 	const currentDogs = allData.slice(
@@ -118,6 +122,10 @@ const DogsList = () => {
 					<option value="desc">Desc</option>
 				</select>
 				<p>order by nweight</p>
+				<select onChange={(event) => handleOrderWeightChange(event)}>
+					<option value="min">menor - mayor</option>
+					<option value="max">mayor - menor</option>
+				</select>
 			</div>
 			<hr />
 			{/** Card */}

@@ -52,7 +52,10 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 		case ORDER_WEIGHT:
-			break;
+			return {
+				...state,
+				dogs: action.payload,
+			};
 
 		default:
 			return state;

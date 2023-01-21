@@ -72,7 +72,7 @@ export const getFilterTemp = (value) => async (dispatch) => {
 	});
 };
 
-const orderAsc = (array) => {
+const orderAscName = (array) => {
 	console.log("asc");
 	return array.sort((x, y) => {
 		const nameX = x.name.toLowerCase();
@@ -86,7 +86,7 @@ const orderAsc = (array) => {
 		return 0;
 	});
 };
-const orderDesc = (array) => {
+const orderDescName = (array) => {
 	console.log("desc");
 	return array.sort((x, y) => {
 		const nameX = x.name.toLowerCase();
@@ -105,15 +105,49 @@ export const orderName = (value) => async (dispatch) => {
 	const res = await axios.get(`/dogs`, {});
 	return dispatch({
 		type: ORDER_NAME,
-		payload: value === "asc" ? orderAsc(res.data) : orderDesc(res.data),
+		payload: value === "asc" ? orderAscName(res.data) : orderDescName(res.data),
 	});
 };
 
-export const orderWeight = (payload) => async (dispatch) => {
+const orderAscWeight = (array) => {
+	return array.sort((x, y) => {
+		const X = x.weight;
+		const Y = y.weight;
+		if (X < Y) {
+			return -1;
+		}
+		if (X > Y) {
+			return 1;
+		}
+		return 0;
+	});
+};
+const orderDescWeight = (array) => {
+	return array.sort((x, y) => {
+		const X = x.weight;
+		const Y = y.weight;
+		if (X < Y) {
+			return 1;
+		}
+		if (X > Y) {
+			return -1;
+		}
+		return 0;
+	});
+};
+
+export const orderWeight = (value) => async (dispatch) => {
 	const res = await axios.get(`/dogs`, {});
-	console.log(res.data);
+	const arrayData = res.data.map((obj) => {
+		const { weight_min, weight_max } = obj;
+		return {
+			...obj,
+			weight: (Number(weight_min) + Number(weight_max)) / 2,
+		};
+	});
 	return dispatch({
 		type: ORDER_WEIGHT,
-		payload,
+		payload:
+			value === "min" ? orderAscWeight(arrayData) : orderDescWeight(arrayData),
 	});
 };

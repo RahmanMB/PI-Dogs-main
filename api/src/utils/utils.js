@@ -7,8 +7,12 @@ const getApiInfo = async () => {
 	const apiUrl = await axios.get(URL);
 	const apiInfo = await apiUrl.data.map(
 		({ weight, height, id, name, life_span, image, temperament }) => {
-			const [weight_min, weight_max] = weight.metric.split("-");
-			const [height_min, height_max] = height.metric.split("-");
+			const [weight_min, weight_max] = weight.metric
+				.split("-")
+				.map((val) => val.trim());
+			const [height_min, height_max] = height.metric
+				.split("-")
+				.map((val) => val.trim());
 			return {
 				id,
 				name,
@@ -51,8 +55,31 @@ const getDbInfo = async () => {
 const getAllDogs = async () => {
 	const apiInfo = await getApiInfo();
 	const dbInfo = await getDbInfo();
-	const allDogs = apiInfo.concat(dbInfo);
-	return allDogs;
+	return apiInfo
+		.map((dog) => {
+			if (dog.id === 183) {
+				dog.weight_min = "3";
+				dog.weight_max = "6";
+			}
+			if (dog.id === 128) {
+				dog.weight_min = "5";
+				dog.weight_max = "8";
+			}
+			if (dog.id === 113) {
+				dog.weight_min = "9";
+				dog.weight_max = "13";
+			}
+			if (dog.id === 232) {
+				dog.weight_min = "6";
+				dog.weight_max = "8";
+			}
+			if (dog.id === 179) {
+				dog.weight_min = "22";
+				dog.weight_max = "30";
+			}
+			return dog;
+		})
+		.concat(dbInfo);
 };
 
 module.exports = { getAllDogs };
