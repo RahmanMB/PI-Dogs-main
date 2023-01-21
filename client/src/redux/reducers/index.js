@@ -40,9 +40,14 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 		case GET_FILTER_TEMP:
-			break;
+			return {
+				...state,
+				dogs: action.payload,
+			};
+
 		case ORDER_NAME:
 			break;
+
 		case ORDER_WEIGHT:
 			break;
 

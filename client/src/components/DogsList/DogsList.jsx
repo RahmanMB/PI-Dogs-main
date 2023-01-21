@@ -7,6 +7,7 @@ import {
 	getAllDogs,
 	getTemperaments,
 	getFilterData,
+	getFilterTemp,
 } from "../../redux/actions";
 import SearchEngine from "./SearchEngine";
 import Card from "../Details/Card";
@@ -48,6 +49,12 @@ const DogsList = () => {
 		value === "all" ? dispatch(getAllDogs()) : dispatch(getFilterData(value));
 	};
 
+	const hanldeFilterTempChange = (event) => {
+		const { value } = event.target;
+		console.log(value);
+		dispatch(getFilterTemp(value));
+	};
+
 	const currentDogs = allData.slice(
 		(pagina - 1) * porPagina,
 		pagina * porPagina
@@ -86,7 +93,7 @@ const DogsList = () => {
 				</div>
 				<div>
 					<p>filter by temperament</p>
-					<select>
+					<select onChange={(event) => hanldeFilterTempChange(event)}>
 						{allTemperaments.map(({ id, name }) => (
 							<option value={name} key={id}>
 								{name}
