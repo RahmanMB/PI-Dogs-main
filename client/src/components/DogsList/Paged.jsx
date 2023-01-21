@@ -1,12 +1,12 @@
 /** Import packages */
-import React from "react";
+import React, { useState } from "react";
 /** Import files */
 // ! --------------------------------
 /** Import styles */
 import css from "./Paged.module.css";
 
 const Paged = ({ pagina, setPagina, maximo }) => {
-	const [input, setInput] = React.useState(1);
+	const [input, setInput] = useState(1);
 
 	const nextPage = () => {
 		setInput(parseInt(input) + 1);

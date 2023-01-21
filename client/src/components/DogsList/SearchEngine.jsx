@@ -12,8 +12,7 @@ const SearchEngine = () => {
 
 	const handleInput = (event) => {
 		event.preventDefault();
-		const { name, value } = event.target;
-		console.log(name, value);
+		const { value } = event.target;
 		setSearch(value);
 	};
 

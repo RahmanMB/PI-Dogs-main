@@ -26,42 +26,23 @@ import Paged from "./Paged";
  *  !Paginado para ir buscando y mostrando las siguientes razas, mostrando 8 razas por página.
  */
 
-const Dogs = () => {
+const DogsList = () => {
 	const dispatch = useDispatch();
 	const allData = useSelector((state) => state.dogs);
 	const allTemperaments = useSelector((state) => state.temperaments);
-	console.log(allTemperaments);
-
-	/** paged */
 	const [pagina, setPagina] = useState(1);
 	// eslint-disable-next-line no-unused-vars
 	const [porPagina, setPorPagina] = useState(8);
 	const maximo = Math.ceil(allData.length / porPagina);
 
+	const hanldeRestartClick = () => {
+		dispatch(getAllDogs());
+	};
+
 	const currentDogs = allData.slice(
 		(pagina - 1) * porPagina,
 		pagina * porPagina
 	);
-
-	/* 	const handleFilterTemp = (event) => {
-		event.preventDefault();
-		const { name, value } = event.target;
-		console.log(name);
-		dispatch(filterTemperaments(value));
-	};
-	const handleOrderName = (event) => {
-		event.preventDefault();
-		const { name, value } = event.target;
-		console.log(name);
-		dispatch(orderName(value));
-	};
-	const handleOrderWeight = (event) => {
-		event.preventDefault();
-		const { name, value } = event.target;
-		console.log(name);
-		dispatch(orderWeight(value));
-	};
- */
 
 	useEffect(() => {
 		dispatch(getAllDogs());
@@ -75,6 +56,14 @@ const Dogs = () => {
 			<div>
 				<SearchEngine />
 			</div>
+			<hr />
+			{/** Reload */}
+			<div>
+				<button type="button" onClick={hanldeRestartClick}>
+					Reload
+				</button>
+			</div>
+			<hr />
 			{/** Filters */}
 			<div>
 				<p>Filter</p>
@@ -97,8 +86,10 @@ const Dogs = () => {
 					</select>
 				</div>
 			</div>
+			<hr />
 			{/** Orders */}
 			<div>Order</div>
+			<hr />
 			{/** Card */}
 			<div>
 				{currentDogs?.map(
@@ -123,4 +114,4 @@ const Dogs = () => {
 	);
 };
 
-export default Dogs;
+export default DogsList;

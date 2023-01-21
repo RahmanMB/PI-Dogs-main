@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 /** Imoport files*/
 import LandingPage from "./components/LandingPage/LandingPage";
-import Dogs from "./components/Dogs/Dogs";
+import DogsList from "./components/DogsList/DogsList";
 /** Import styles */
 import "./App.css";
 
@@ -12,7 +12,7 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path="/" component={LandingPage} />
-					<Route path="/dogs" component={Dogs} />
+					<Route path="/dogs" component={DogsList} />
 				</Switch>
 			</Router>
 		</div>
