@@ -3,6 +3,7 @@ import {
 	GET_NAME,
 	GET_TEMPERAMENTS,
 	GET_FILTER_TEMP,
+	GET_FILTER_DATA,
 	ORDER_NAME,
 	ORDER_WEIGHT,
 } from "../types";
@@ -30,6 +31,12 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				temperaments: action.payload,
+			};
+
+		case GET_FILTER_DATA:
+			return {
+				...state,
+				dogs: action.payload,
 			};
 
 		case GET_FILTER_TEMP:

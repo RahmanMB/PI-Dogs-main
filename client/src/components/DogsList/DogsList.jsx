@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 /** Import files */
-import { getAllDogs, getTemperaments } from "../../redux/actions";
+import {
+	getAllDogs,
+	getTemperaments,
+	getFilterData,
+} from "../../redux/actions";
 import SearchEngine from "./SearchEngine";
 import Card from "../Details/Card";
 import Paged from "./Paged";
@@ -39,6 +43,11 @@ const DogsList = () => {
 		dispatch(getAllDogs());
 	};
 
+	const handleFilterDataChange = (event) => {
+		const { value } = event.target;
+		value === "all" ? dispatch(getAllDogs()) : dispatch(getFilterData(value));
+	};
+
 	const currentDogs = allData.slice(
 		(pagina - 1) * porPagina,
 		pagina * porPagina
@@ -69,10 +78,10 @@ const DogsList = () => {
 				<p>Filter</p>
 				<div>
 					<p>Filter by data (api | db)</p>
-					<select>
+					<select onChange={(event) => handleFilterDataChange(event)}>
 						<option value="all">all</option>
-						<option value="api">Api</option>
-						<option value="db">DataBase</option>
+						<option value="false">Api</option>
+						<option value="true">DataBase</option>
 					</select>
 				</div>
 				<div>

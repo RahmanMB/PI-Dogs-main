@@ -4,7 +4,7 @@ import {
 	GET_NAME,
 	GET_TEMPERAMENTS,
 	GET_FILTER_TEMP,
-	GET_FILTER_CREATED,
+	GET_FILTER_DATA,
 	ORDER_NAME,
 	ORDER_WEIGHT,
 } from "../types";
@@ -48,11 +48,19 @@ export const getTemperaments = () => async (dispatch) => {
 	}
 };
 
-export const filterCreated = (payload) => {
-	return {
-		type: GET_FILTER_CREATED,
-		payload,
-	};
+export const getFilterData = (value) => async (dispatch) => {
+	try {
+		const res = await axios.get(`/dogs`, {});
+		/* console.log(
+			res.data.filter((item) => item.createdInDb.toString() === value)
+		); */
+		return dispatch({
+			type: GET_FILTER_DATA,
+			payload: res.data.filter((item) => item.createdInDb.toString() === value),
+		});
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 export const filterTemperaments = (payload) => async (dispatch) => {
