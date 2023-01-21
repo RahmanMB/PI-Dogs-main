@@ -57,25 +57,24 @@ const getAllDogs = async () => {
 	const dbInfo = await getDbInfo();
 	return apiInfo
 		.map((dog) => {
-			if (dog.id === 183) {
-				dog.weight_min = "3";
-				dog.weight_max = "6";
+			if (
+				(!dog.weight_min && !dog.weight_max) ||
+				(isNaN(dog.weight_min) && isNaN(dog.weight_max))
+			) {
+				dog.weight_min = "6.44";
+				dog.weight_max = "9.66";
 			}
-			if (dog.id === 128) {
-				dog.weight_min = "5";
-				dog.weight_max = "8";
-			}
-			if (dog.id === 113) {
-				dog.weight_min = "9";
-				dog.weight_max = "13";
-			}
-			if (dog.id === 232) {
-				dog.weight_min = "6";
-				dog.weight_max = "8";
-			}
-			if (dog.id === 179) {
-				dog.weight_min = "22";
-				dog.weight_max = "30";
+			if (
+				!dog.weight_min ||
+				!dog.weight_max ||
+				isNaN(dog.weight_min) ||
+				isNaN(dog.weight_max)
+			) {
+				if (!dog.weight_min || isNaN(dog.weight_min)) {
+					dog.weight_min = (Number(dog.weight_max) - 3.22).toString();
+				} else {
+					dog.weight_max = (Number(dog.weight_min) + 3.22).toString();
+				}
 			}
 			return dog;
 		})
