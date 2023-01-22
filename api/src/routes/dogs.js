@@ -6,7 +6,7 @@ const router = Router();
 
 // GET /dogs
 router.get("/", async (req, res, next) => {
-	const name = req.query.name;
+	const { name } = req.query;
 	try {
 		const allDogs = await getAllDogs();
 		if (name) {

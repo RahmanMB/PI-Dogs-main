@@ -25,8 +25,8 @@ router.get("/", async (req, res, next) => {
 			})
 		);
 
-		const resultado2 = await Temperament.findAll();
-		res.send(resultado2);
+		const data = await Temperament.findAll();
+		res.send(data);
 	} catch (error) {
 		next(error);
 	}

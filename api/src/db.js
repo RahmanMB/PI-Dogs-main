@@ -38,6 +38,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 const { Dog, Temperament } = sequelize.models;
+
 // Generating function for id
 function* generateId() {
 	let id = 322;
