@@ -7,6 +7,7 @@ import {
 	GET_FILTER_TEMP,
 	ORDER_NAME,
 	ORDER_WEIGHT,
+	DETAIL_TARGET,
 } from "../types";
 
 export const getAllDogs = () => async (dispatch) => {
@@ -45,6 +46,19 @@ export const getName = (name) => async (dispatch) => {
 		});
 	} catch (err) {
 		console.log(err);
+	}
+};
+
+export const detailTarget = (id) => async (dispatch) => {
+	try {
+		const res = await axios.get(`/dogs/${id}`, {});
+		console.log(res.data[0]);
+		return dispatch({
+			type: DETAIL_TARGET,
+			payload: res.data.shift(),
+		});
+	} catch (error) {
+		console.log(error);
 	}
 };
 

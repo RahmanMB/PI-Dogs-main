@@ -1,11 +1,16 @@
+/** Import packages */
 import React from "react";
+import { Link } from "react-router-dom";
+/** Import styles */
 // import css from './Card.module.css';
 
-const Card = ({ image, name, temperaments, weight_min, weight_max }) => {
+const Card = ({ id, image, name, temperaments, weight_min, weight_max }) => {
 	return (
 		<div>
 			<div>
-				<img src={image} alt="---322---" width="200px" />
+				<Link to={`/dogs/${id}`}>
+					<img src={image} alt="---322---" width="200px" />
+				</Link>
 			</div>
 			<div>
 				<p>

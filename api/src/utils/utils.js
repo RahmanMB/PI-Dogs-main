@@ -76,6 +76,25 @@ const getAllDogs = async () => {
 					dog.weight_max = (Number(dog.weight_min) + 3.22).toString();
 				}
 			}
+			if (
+				(!dog.height_min && !dog.height_max) ||
+				(isNaN(dog.height_min) && isNaN(dog.height_max))
+			) {
+				dog.height_min = "32.2";
+				dog.height_max = "38.64";
+			}
+			if (
+				!dog.height_min ||
+				!dog.height_max ||
+				isNaN(dog.height_min) ||
+				isNaN(dog.height_max)
+			) {
+				if (!dog.height_min || isNaN(dog.height_min)) {
+					dog.height_min = (Number(dog.height_max) - 3.22).toString();
+				} else {
+					dog.height_max = (Number(dog.height_min) + 3.22).toString();
+				}
+			}
 			return dog;
 		})
 		.concat(dbInfo);

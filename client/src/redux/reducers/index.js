@@ -6,11 +6,13 @@ import {
 	GET_FILTER_DATA,
 	ORDER_NAME,
 	ORDER_WEIGHT,
+	DETAIL_TARGET,
 } from "../types";
 
 const initialState = {
 	dogs: [],
 	temperaments: [],
+	target: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -55,6 +57,12 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				dogs: action.payload,
+			};
+
+		case DETAIL_TARGET:
+			return {
+				...state,
+				target: action.payload,
 			};
 
 		default:

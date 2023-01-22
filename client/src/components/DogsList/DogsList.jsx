@@ -1,7 +1,6 @@
 /** Import package */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 /** Import files */
 import {
 	getAllDogs,
@@ -132,15 +131,15 @@ const DogsList = () => {
 			<div>
 				{currentDogs?.map(
 					({ id, name, image, temperaments, weight_min, weight_max }) => (
-						<Link to={`/details/${id}`} key={id}>
-							<Card
-								name={name}
-								image={image}
-								temperaments={temperaments}
-								weight_min={weight_min}
-								weight_max={weight_max}
-							/>
-						</Link>
+						<Card
+							key={id}
+							id={id}
+							name={name}
+							image={image}
+							temperaments={temperaments}
+							weight_min={weight_min}
+							weight_max={weight_max}
+						/>
 					)
 				)}
 			</div>
