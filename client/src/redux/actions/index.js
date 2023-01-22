@@ -12,11 +12,10 @@ import {
 
 export const getAllDogs = () => async (dispatch) => {
 	try {
-		const res = await axios.get(`/dogs`, {});
-		// console.log(res.data);
+		const response = await axios.get(`/dogs`, {});
 		return dispatch({
 			type: GET_ALL_DOGS,
-			payload: res.data,
+			payload: response.data,
 		});
 	} catch (err) {
 		console.log(err);
@@ -25,11 +24,10 @@ export const getAllDogs = () => async (dispatch) => {
 
 export const getTemperaments = () => async (dispatch) => {
 	try {
-		const res = await axios.get(`/temperaments`, {});
-		// console.log(res.data);
+		const response = await axios.get(`/temperaments`, {});
 		return dispatch({
 			type: GET_TEMPERAMENTS,
-			payload: res.data,
+			payload: response.data,
 		});
 	} catch (err) {
 		console.log(err);
@@ -38,11 +36,10 @@ export const getTemperaments = () => async (dispatch) => {
 
 export const getName = (name) => async (dispatch) => {
 	try {
-		const res = await axios.get(`/dogs?name=${name}`, {});
-		// console.log(res.data);
+		const response = await axios.get(`/dogs?name=${name}`, {});
 		return dispatch({
 			type: GET_NAME,
-			payload: res.data,
+			payload: response.data,
 		});
 	} catch (err) {
 		console.log(err);
@@ -51,11 +48,10 @@ export const getName = (name) => async (dispatch) => {
 
 export const detailTarget = (id) => async (dispatch) => {
 	try {
-		const res = await axios.get(`/dogs/${id}`, {});
-		console.log(res.data[0]);
+		const response = await axios.get(`/dogs/${id}`, {});
 		return dispatch({
 			type: DETAIL_TARGET,
-			payload: res.data.shift(),
+			payload: response.data.shift(),
 		});
 	} catch (error) {
 		console.log(error);
@@ -64,13 +60,12 @@ export const detailTarget = (id) => async (dispatch) => {
 
 export const getFilterData = (value) => async (dispatch) => {
 	try {
-		const res = await axios.get(`/dogs`, {});
-		/* console.log(
-			res.data.filter((item) => item.createdInDb.toString() === value)
-		); */
+		const response = await axios.get(`/dogs`, {});
 		return dispatch({
 			type: GET_FILTER_DATA,
-			payload: res.data.filter((item) => item.createdInDb.toString() === value),
+			payload: response.data.filter(
+				(item) => item.createdInDb.toString() === value
+			),
 		});
 	} catch (error) {
 		console.log(error);
@@ -78,16 +73,14 @@ export const getFilterData = (value) => async (dispatch) => {
 };
 
 export const getFilterTemp = (value) => async (dispatch) => {
-	const res = await axios.get(`/dogs`, {});
-	/* console.log(res.data.filter((item) => item.temperaments?.includes(value))); */
+	const response = await axios.get(`/dogs`, {});
 	return dispatch({
 		type: GET_FILTER_TEMP,
-		payload: res.data.filter((item) => item.temperaments?.includes(value)),
+		payload: response.data.filter((item) => item.temperaments?.includes(value)),
 	});
 };
 
 const orderAscName = (array) => {
-	console.log("asc");
 	return array.sort((x, y) => {
 		const nameX = x.name.toLowerCase();
 		const nameY = y.name.toLowerCase();
@@ -101,7 +94,6 @@ const orderAscName = (array) => {
 	});
 };
 const orderDescName = (array) => {
-	console.log("desc");
 	return array.sort((x, y) => {
 		const nameX = x.name.toLowerCase();
 		const nameY = y.name.toLowerCase();
@@ -114,12 +106,14 @@ const orderDescName = (array) => {
 		return 0;
 	});
 };
-
 export const orderName = (value) => async (dispatch) => {
-	const res = await axios.get(`/dogs`, {});
+	const response = await axios.get(`/dogs`, {});
 	return dispatch({
 		type: ORDER_NAME,
-		payload: value === "asc" ? orderAscName(res.data) : orderDescName(res.data),
+		payload:
+			value === "asc"
+				? orderAscName(response.data)
+				: orderDescName(response.data),
 	});
 };
 
@@ -149,10 +143,9 @@ const orderDescWeight = (array) => {
 		return 0;
 	});
 };
-
 export const orderWeight = (value) => async (dispatch) => {
-	const res = await axios.get(`/dogs`, {});
-	const arrayData = res.data.map((obj) => {
+	const response = await axios.get(`/dogs`, {});
+	const arrayData = response.data.map((obj) => {
 		const { weight_min, weight_max } = obj;
 		return {
 			...obj,
@@ -164,4 +157,16 @@ export const orderWeight = (value) => async (dispatch) => {
 		payload:
 			value === "min" ? orderAscWeight(arrayData) : orderDescWeight(arrayData),
 	});
+};
+
+export const createData = (formData) => async () => {
+	try {
+		const response = await axios.post("/dogs", formData, {
+			headers: { "Content-Type": "application/json" },
+		});
+		console.log(response.data.message);
+		return response;
+	} catch (error) {
+		console.log(error);
+	}
 };

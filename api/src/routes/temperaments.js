@@ -8,9 +8,7 @@ const router = Router();
 
 router.get("/", async (req, res, next) => {
 	try {
-		// Me traigo los Dogs de la api
 		const dogsApi = await axios.get(URL);
-
 		const listTemperaments = dogsApi.data.map((dog) => {
 			if (!dog.temperament) return (dog.temperament = undefined);
 			return dog.temperament.split(", ");
@@ -27,7 +25,6 @@ router.get("/", async (req, res, next) => {
 			})
 		);
 
-		// Me traigo todos los temperamentos de la base de datos
 		const resultado2 = await Temperament.findAll();
 		res.send(resultado2);
 	} catch (error) {

@@ -72,7 +72,7 @@ router.post("/", async (req, res, next) => {
 				}
 			});
 		}
-		res.json(dogCreated);
+		res.json({ message: "Successfully created" });
 	} catch (error) {
 		next(error);
 	}

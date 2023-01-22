@@ -6,3 +6,4 @@ export const GET_FILTER_TEMP = "GET_FILTER_TEMP";
 export const ORDER_NAME = "ORDER_NAME";
 export const ORDER_WEIGHT = "ORDER_WEIGHT";
 export const DETAIL_TARGET = "DETAIL_TARGET";
+export const CREATE_DATA = "CREATE_DATA";
