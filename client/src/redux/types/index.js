@@ -1,3 +1,4 @@
+/* Exporting the constants to be used in the reducer. */
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_NAME = "GET_NAME";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
