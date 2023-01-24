@@ -1,0 +1,66 @@
+.card {
+	background-color: rgba(17, 17, 17, 0.1618);
+	display: flex;
+	border-radius: 1.618rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 320px;
+	width: 200px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.top_card {
+	height: 197px;
+	width: 200px;
+	padding: 0;
+	background-color: transparent;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.top_card .img {
+	width: 161.8px;
+	height: 161.8px;
+	overflow: hidden;
+	box-shadow: 0 0 1.618rem rgba(255, 255, 255, 0.333);
+	border-radius: 50%;
+}
+.top_card .image {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+.top_card .image:active {
+	transform: scale(1.618);
+}
+.top_card .name {
+	color: #9ebbff;
+	font-weight: bold;
+	text-align: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	margin-top: 0.5rem;
+}
+
+.bottom_card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.bottom_card .temperaments {
+	color: #7e82b7;
+	font-size: 1rem;
+	margin-top: 0.2rem;
+	padding: 10px;
+}
+.bottom_card .weight {
+	font-size: 1.2rem;
+	color: #568ad8;
+	text-align: center;
+	justify-content: center;
+	font-weight: bold;
+}
