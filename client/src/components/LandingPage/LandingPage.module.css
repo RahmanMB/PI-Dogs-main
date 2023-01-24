@@ -1,0 +1,84 @@
+.container {
+	background-color: rgba(17, 17, 17, 0.201);
+	border-radius: 1.618rem;
+	box-shadow: 0 1em 1.618rem rgba(80, 79, 82, 0.322);
+	position: relative;
+	overflow: hidden;
+	width: 900px;
+	height: 556.322px;
+}
+
+.left_container {
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 1.618rem 2.618rem;
+	height: 100%;
+	text-align: center;
+	color: rgba(322, 322, 322, 0.618);
+	width: 61.805%;
+}
+.left_container .hachiko {
+	font-size: 1.322rem;
+	line-height: 1.5;
+	letter-spacing: 1px;
+	text-transform: inherit;
+}
+
+.right_container {
+	position: absolute;
+	top: 0;
+	left: 61.805%;
+	width: 38.195%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+}
+.right_container .image {
+	height: 61.805%;
+	width: 100%;
+	background-size: cover;
+}
+.right_container .text {
+	font-family: "Cascadia Code";
+	font-size: 2.618rem;
+	font-weight: bold;
+	color: #807079;
+	text-transform: uppercase;
+	letter-spacing: 1.618px;
+	padding: 10px 20px 20px 20px;
+	text-align: center;
+}
+.right_container .button {
+	position: absolute;
+	background-color: rgba(322, 322, 322, 0.322);
+	border: none;
+	border-radius: 1.618rem;
+	font-size: 14px;
+	text-transform: uppercase;
+	bottom: 40px;
+	right: 60px;
+	padding: 10px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 3px;
+	transition: transform 80ms ease-in;
+}
+.icon {
+	width: 30px;
+	bottom: 5px;
+	position: absolute;
+}
+.right_container .button:active {
+	transform: scale(1.618);
+}
+.right_container .button:hover {
+	background-color: rgba(322, 322, 322, 0.644);
+	box-shadow: 1em 1em 1.618rem rgba(168, 168, 168, 0.322);
+	font-size: 16px;
+}
+.right_container .button:focus {
+	outline: none;
+}

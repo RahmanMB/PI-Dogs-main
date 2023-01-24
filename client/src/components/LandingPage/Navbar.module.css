@@ -1,0 +1,36 @@
+.navbarContainer {
+	width: 100%; /* ocupa todo el ancho de la pantalla */
+	display: flex; /* permite alinear los elementos dentro de la barra de navegación */
+	align-items: center; /* centra los elementos en el eje vertical */
+	justify-content: space-between; /* espacio entre los elementos */
+	background-color: #000000; /* color de fondo de la barra de navegación */
+}
+
+/* Contenido de la barra de navegación */
+.navbarContent {
+	display: flex; /* permite alinear los elementos dentro de la barra de navegación */
+	align-items: center; /* centra los elementos en el eje vertical */
+	justify-content: space-between; /* espacio entre los elementos */
+	width: 100%; /* ocupa todo el ancho del contenedor */
+}
+
+/* Estilo para los enlaces de la barra de navegación */
+.navLink {
+	color: #ffffff; /* color del texto del enlace */
+	text-decoration: none; /* quita la subraya debajo del texto */
+	padding: 10px; /* espacio alrededor del texto */
+	font-size: 20px; /* tamaño de la letra */
+}
+
+.navbarLogo {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 5rem;
+	height: 5rem;
+}
+
+/* Estilo para el logo de la barra de navegación */
+.navbarLogo {
+	width: 50px; /* ancho del logo */
+	height: 50px; /* alto del logo */
+}

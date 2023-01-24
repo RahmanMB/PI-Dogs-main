@@ -2,24 +2,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 /** Import files */
+import img_1 from "../../assets/images/Fannci_1.png";
+import img_2 from "../../assets/images/Fannci_1.png";
 /** Import styles */
-// import css from 'Navbar.module.css';
+import css from "./Navbar.module.css";
 
 const Navbar = () => {
 	return (
-		<div>
-			<nav>
-				<div>
-					<NavLink exact to="/dogs" activeClassName="active">
-						Dogs
-					</NavLink>
-					<NavLink exact to="/create" activeClassName="active">
-						Create
-					</NavLink>
-					<NavLink exact to="/" activeClassName="active">
-						Landoing Page
-					</NavLink>
-				</div>
+		<div className={css.navbarContainer}>
+			<nav className={css.navbarContent}>
+				<NavLink to="/dogs" className={css.navLink}>
+					<img className={css.navbarLogo} src={img_1} alt="logo" />
+				</NavLink>
+				<NavLink className={css.navLink} to="/create">
+					Create
+				</NavLink>
+				<NavLink className={css.navLink} to="/">
+					<img className={css.navbarLogo} src={img_2} alt="logo" />
+				</NavLink>
 			</nav>
 		</div>
 	);

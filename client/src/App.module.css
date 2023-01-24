@@ -1,0 +1,15 @@
+/* Estilo para el contenedor principal */
+.main {
+	border-radius: 1.618em;
+	width: 100%;
+	aspect-ratio: 1.68/1;
+	position: relative;
+	-webkit-backdrop-filter: blur(1.618rem);
+	backdrop-filter: blur(1.68em);
+	padding: 1.618rem 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 1.618rem;
+}
