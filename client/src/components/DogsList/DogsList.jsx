@@ -14,23 +14,7 @@ import SearchEngine from "./SearchEngine";
 import Card from "../Details/Card";
 import Paged from "./Paged";
 /** Import styles */
-// import css from './Dogs.module.css';
-
-/**
- * 	!Input de búsqueda para encontrar razas de perros por nombre
- * 	!Área donde se verá el listado de razas de perros. Deberá mostrar su:
- * 		* Imagen
- * 		* Nombre
- *    * Temperamento
- *    * Peso
- *  !Botones/Opciones para filtrar por:
- * 		* Temperamento
- *  	* Raza existente (es decir las que vienen de la API) o agregada por nosotros (creadas mediante el form)
- *  Botones/Opciones para ordenar tanto ascendentemente como descendentemente las razas de perro por:
- *  	* Orden alfabético
- *  	* Peso
- *  !Paginado para ir buscando y mostrando las siguientes razas, mostrando 8 razas por página.
- */
+import css from "./Dogs.module.css";
 
 const DogsList = () => {
 	const dispatch = useDispatch();
