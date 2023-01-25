@@ -2,7 +2,6 @@
 .main {
 	border-radius: 1.618em;
 	width: 100%;
-	aspect-ratio: 1.68/1;
 	position: relative;
 	-webkit-backdrop-filter: blur(1.618rem);
 	backdrop-filter: blur(1.68em);

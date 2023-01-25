@@ -1,6 +1,7 @@
 /** Import package */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 /** Import files */
 import {
 	getAllDogs,
@@ -108,6 +109,27 @@ const DogsList = () => {
 							<option value="max">mayor - menor</option>
 						</select>
 					</div>
+				</div>
+
+				<div className={css.landing_create}>
+					<Link to="/">
+						<button className={css.landing_button}>
+							<span>Back</span>
+							<svg viewBox="0 0 13 10" height="10px" width="15px">
+								<path d="M1,5 L11,5"></path>
+								<polyline points="8 1 12 5 8 9"></polyline>
+							</svg>
+						</button>
+					</Link>
+					<Link to="/create">
+						<button className={css.landing_button}>
+							<span>Create</span>
+							<svg viewBox="0 0 13 10" height="10px" width="15px">
+								<path d="M1,5 L11,5"></path>
+								<polyline points="8 1 12 5 8 9"></polyline>
+							</svg>
+						</button>
+					</Link>
 				</div>
 
 				<Paged pagina={pagina} setPagina={setPagina} maximo={maximo} />

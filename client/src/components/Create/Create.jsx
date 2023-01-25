@@ -1,6 +1,7 @@
 /** Import packages */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 /** Import files */
 import { createData, getTemperaments } from "../../redux/actions";
 /** Import styles */
@@ -259,17 +260,28 @@ const Create = () => {
 							)}
 						</div>
 					</div>
-					<button
-						disabled={button}
-						type="submit"
-						form="form"
-						className={css.button_send}>
-						<span>Create</span>
-						<svg viewBox="0 0 13 10" height="10px" width="15px">
-							<path d="M1,5 L11,5"></path>
-							<polyline points="8 1 12 5 8 9"></polyline>
-						</svg>
-					</button>
+					<div className={css.cancel_create}>
+						<Link to="/dogs">
+							<button className={`${css.button_send} ${css.red}`}>
+								<span>Cancel</span>
+								<svg viewBox="0 0 13 10" height="10px" width="15px">
+									<path d="M1,5 L11,5"></path>
+									<polyline points="8 1 12 5 8 9"></polyline>
+								</svg>
+							</button>
+						</Link>
+						<button
+							disabled={button}
+							type="submit"
+							form="form"
+							className={`${css.button_send} ${css.blue}`}>
+							<span>Create</span>
+							<svg viewBox="0 0 13 10" height="10px" width="15px">
+								<path d="M1,5 L11,5"></path>
+								<polyline points="8 1 12 5 8 9"></polyline>
+							</svg>
+						</button>
+					</div>
 				</div>
 			</div>
 		</form>

@@ -1,7 +1,7 @@
 /** Import packages */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 /** Import files */
 import { detailTarget } from "../../redux/actions";
 /** Import styles */
@@ -64,6 +64,9 @@ const DetailCard = () => {
 
 			<div className={css.right_detail}>
 				<img src={image} alt={`${name} dog`} className={css.image} />
+				<Link to="/dogs">
+					<button type="">x</button>
+				</Link>
 			</div>
 		</div>
 	);

@@ -3,12 +3,12 @@
 	background-color: rgba(255, 255, 255, 0.123);
 	display: flex;
 	flex-direction: row;
-	border-radius: 0 0 1.618rem 1.618rem;
+	border-radius: 1.618rem;
 	overflow: hidden;
 }
 
 .left {
-	background-color: rgba(158, 137, 137, 0.548);
+	background-color: rgba(201, 201, 201, 0.322);
 	width: 400px;
 	height: 665px;
 	display: flex;
@@ -20,7 +20,7 @@
 	align-self: center;
 	width: 280px;
 	overflow: hidden;
-	padding: 5px 0 3rem 0;
+	padding: 15px 0 1rem 0;
 }
 .left .image_border .image {
 	width: 280px;
@@ -61,6 +61,64 @@
 .content .content_inf select option {
 	padding: 0px;
 	font-size: 0.618rem;
+}
+.landing_create {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: row;
+	margin-bottom: 20px;
+}
+.landing_create .landing_button {
+	position: relative;
+	margin: auto;
+	padding: 9px 12px;
+	transition: all 0.2s ease;
+	border: none;
+	background: none;
+}
+.landing_button:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	border-radius: 50px;
+	background: #8df4f766;
+	width: 35px;
+	height: 35px;
+	transition: all 0.3s ease;
+}
+.landing_button span {
+	position: relative;
+	font-family: "Ubuntu", sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: #234567;
+}
+.landing_button svg {
+	position: relative;
+	top: 0;
+	margin-left: 10px;
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke: #234567;
+	stroke-width: 2;
+	transform: translateX(-5px);
+	transition: all 0.3s ease;
+}
+.landing_button:hover:before {
+	width: 100%;
+	background: #8df4f7c5;
+}
+.landing_button:hover svg {
+	transform: translateX(0);
+}
+.landing_button:active {
+	transform: scale(0.95);
 }
 
 .right {
