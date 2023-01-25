@@ -1,5 +1,6 @@
 .container {
 	width: 1322px;
+	height: 817px;
 	background-color: rgba(255, 255, 255, 0.123);
 	display: flex;
 	flex-direction: row;
@@ -10,9 +11,11 @@
 .left {
 	background-color: rgba(201, 201, 201, 0.322);
 	width: 400px;
-	height: 665px;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	align-items: center-start;
 }
 .left .image_border {
 	display: flex;
@@ -122,9 +125,9 @@
 }
 
 .right {
+	margin-top: 18px;
 	width: 922px;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 5px;
-	padding: 10px 0 10px 20px;
+	padding: 1.618rem;
 }
