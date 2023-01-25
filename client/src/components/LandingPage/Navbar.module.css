@@ -1,25 +1,26 @@
 .navbarContainer {
-	width: 100%; /* ocupa todo el ancho de la pantalla */
-	display: flex; /* permite alinear los elementos dentro de la barra de navegación */
-	align-items: center; /* centra los elementos en el eje vertical */
-	justify-content: space-between; /* espacio entre los elementos */
-	background-color: #000000; /* color de fondo de la barra de navegación */
+	height: 3rem;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: transparent !important;
+	border-bottom: 1px solid var(--ifm-color-emphasis-300);
+	box-shadow: none !important;
 }
 
-/* Contenido de la barra de navegación */
 .navbarContent {
-	display: flex; /* permite alinear los elementos dentro de la barra de navegación */
-	align-items: center; /* centra los elementos en el eje vertical */
-	justify-content: space-between; /* espacio entre los elementos */
-	width: 100%; /* ocupa todo el ancho del contenedor */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
 }
 
-/* Estilo para los enlaces de la barra de navegación */
 .navLink {
-	color: #ffffff; /* color del texto del enlace */
-	text-decoration: none; /* quita la subraya debajo del texto */
-	padding: 10px; /* espacio alrededor del texto */
-	font-size: 20px; /* tamaño de la letra */
+	color: #ffffff;
+	text-decoration: none;
+	padding: 10px;
+	font-size: 20px;
 }
 
 .navbarLogo {
@@ -29,8 +30,7 @@
 	height: 5rem;
 }
 
-/* Estilo para el logo de la barra de navegación */
 .navbarLogo {
-	width: 50px; /* ancho del logo */
-	height: 50px; /* alto del logo */
+	width: 50px;
+	height: 50px;
 }

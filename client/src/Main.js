@@ -1,7 +1,6 @@
 /** Import package */
 import { Switch, Route } from "react-router-dom";
 /** Imoport file  */
-import Navbar from "./components/LandingPage/Navbar";
 import DogsList from "./components/DogsList/DogsList";
 import DetailCard from "./components/Details/DetailCard";
 import Create from "./components/Create/Create";
@@ -9,7 +8,6 @@ import Create from "./components/Create/Create";
 function Main({ location }) {
 	return (
 		<div>
-			{location.pathname !== "/" && <Navbar />}
 			<Switch>
 				<Route exact path="/dogs" component={DogsList} />
 				<Route exact path="/dogs/:id" component={DetailCard} />

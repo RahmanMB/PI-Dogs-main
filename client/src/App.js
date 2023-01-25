@@ -1,9 +1,11 @@
 /** Import package */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-/** Imoport file  */
+/** Imoport file */
 import LandingPage from "./components/LandingPage/LandingPage";
-import Main from "./Main";
-/** Import stule  */
+import DogsList from "./components/DogsList/DogsList";
+import DetailCard from "./components/Details/DetailCard";
+import Create from "./components/Create/Create";
+/** Import stule */
 import css from "./App.module.css";
 
 function App() {
@@ -12,7 +14,9 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path="/" component={LandingPage} />
-					<Route path="/" component={Main} />
+					<Route exact path="/dogs" component={DogsList} />
+					<Route exact path="/dogs/:id" component={DetailCard} />
+					<Route exact path="/create" component={Create} />
 				</Switch>
 			</Router>
 		</div>
