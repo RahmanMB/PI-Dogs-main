@@ -43,8 +43,11 @@ const Paged = ({ pagina, setPagina, maximo }) => {
 
 	return (
 		<div className={css.container}>
-			<button disabled={pagina === 1 || pagina < 1} onClick={previousPage}>
-				Back
+			<button
+				className={css.container__button}
+				disabled={pagina === 1 || pagina < 1}
+				onClick={previousPage}>
+				&lt;
 			</button>
 			<input
 				onChange={(event) => onChange(event)}
@@ -55,9 +58,10 @@ const Paged = ({ pagina, setPagina, maximo }) => {
 			/>
 			<p>de {maximo}</p>
 			<button
+				className={css.container__button}
 				disabled={pagina === maximo || pagina > maximo}
 				onClick={nextPage}>
-				Next
+				&gt;
 			</button>
 		</div>
 	);

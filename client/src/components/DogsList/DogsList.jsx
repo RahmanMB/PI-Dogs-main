@@ -13,6 +13,7 @@ import {
 import SearchEngine from "./SearchEngine";
 import Card from "../Details/Card";
 import Paged from "./Paged";
+import image from "../../assets/images/Fannci_2.png";
 /** Import styles */
 import css from "./Dogs.module.css";
 
@@ -60,59 +61,59 @@ const DogsList = () => {
 	}, [dispatch]);
 
 	return (
-		<div>
-			<h2>The dog </h2>
-			{/** Search Engine */}
-			<div>
+		<div className={css.container}>
+			<div className={css.left}>
+				<div className={css.image_border}>
+					<img
+						src={image}
+						alt="Profile Dog"
+						className={css.image}
+						onClick={hanldeRestartClick}
+					/>
+				</div>
+
 				<SearchEngine />
-			</div>
-			<hr />
-			{/** Reload */}
-			<div>
-				<button type="button" onClick={hanldeRestartClick}>
-					Reload
-				</button>
-			</div>
-			<hr />
-			{/** Filters */}
-			<div>
-				<p>Filter</p>
-				<div>
-					<p>Filter by data (api | db)</p>
-					<select onChange={(event) => handleFilterDataChange(event)}>
-						<option value="all">all</option>
-						<option value="false">Api</option>
-						<option value="true">DataBase</option>
-					</select>
+
+				<div className={css.content}>
+					<p>Filter</p>
+					<div className={css.content_inf}>
+						<p>data</p>
+						<select onChange={(event) => handleFilterDataChange(event)}>
+							<option value="all">all</option>
+							<option value="false">Api</option>
+							<option value="true">DataBase</option>
+						</select>
+						<p>temperament</p>
+						<select onChange={(event) => hanldeFilterTempChange(event)}>
+							{allTemperaments.map(({ id, name }) => (
+								<option value={name} key={id}>
+									{name}
+								</option>
+							))}
+						</select>
+					</div>
 				</div>
-				<div>
-					<p>filter by temperament</p>
-					<select onChange={(event) => hanldeFilterTempChange(event)}>
-						{allTemperaments.map(({ id, name }) => (
-							<option value={name} key={id}>
-								{name}
-							</option>
-						))}
-					</select>
+
+				<div className={css.content}>
+					<p>Order</p>
+					<div className={css.content_inf}>
+						<p>name</p>
+						<select onChange={(event) => handleOrderNameChange(event)}>
+							<option value="asc">Asc</option>
+							<option value="desc">Desc</option>
+						</select>
+						<p>weight</p>
+						<select onChange={(event) => handleOrderWeightChange(event)}>
+							<option value="min">menor - mayor</option>
+							<option value="max">mayor - menor</option>
+						</select>
+					</div>
 				</div>
+
+				<Paged pagina={pagina} setPagina={setPagina} maximo={maximo} />
 			</div>
-			<hr />
-			{/** Orders */}
-			<div>
-				<p>order by name</p>
-				<select onChange={(event) => handleOrderNameChange(event)}>
-					<option value="asc">Asc</option>
-					<option value="desc">Desc</option>
-				</select>
-				<p>order by nweight</p>
-				<select onChange={(event) => handleOrderWeightChange(event)}>
-					<option value="min">menor - mayor</option>
-					<option value="max">mayor - menor</option>
-				</select>
-			</div>
-			<hr />
-			{/** Card */}
-			<div>
+
+			<div className={css.right}>
 				{currentDogs?.map(
 					({ id, name, image, temperaments, weight_min, weight_max }) => (
 						<Card
@@ -126,10 +127,6 @@ const DogsList = () => {
 						/>
 					)
 				)}
-			</div>
-			{/** Paginado */}
-			<div>
-				<Paged pagina={pagina} setPagina={setPagina} maximo={maximo} />
 			</div>
 		</div>
 	);
