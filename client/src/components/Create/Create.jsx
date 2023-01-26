@@ -1,49 +1,30 @@
 /** Import packages */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 /** Import files */
 import { createData, getTemperaments } from "../../redux/actions";
-import img_1 from "../../assets/images/Fannci_3.png";
+import validation from "./validations";
 /** Import styles */
 import css from "./Create.module.css";
 
-const validate = (data) => {
-	const errors = {};
-	if (!data.name) errors.name = "You must enter a name";
-	if (data.name.length < 4) errors.name = "Minimum 4 characters.";
-	if (!data.height_min) errors.height_min = "You must enter a minimum height";
-	if (!data.height_max) errors.height_max = "You must enter a maximum height";
-	if (!data.weight_min) errors.weight_min = "You must enter a minimum weight";
-	if (!data.weight_max) errors.weight_max = "You must enter a maximum weight";
-	if (!data.life_span) errors.life_span = "You must enter a life span";
-	if (data.weight_min > data.weight_max || data.weight_max < data.weight_min)
-		errors.weight_min =
-			"Minimum weight must be less or equal than maximum weight ";
-	if (data.height_min > data.height_max || data.height_max < data.height_min)
-		errors.height_min =
-			"Minimum height must be less or equal than maximum height ";
-	if (!data.temperaments) {
-		errors.temperaments = "You must select a temperament or create a new one";
-	}
-	if (!data.image) {
-		errors.image = "Insert a valid image";
-	}
-	return errors;
-};
-
 const Create = () => {
 	const dispatch = useDispatch();
+	const allDogs = useSelector((state) => state.dogs);
+	const nameDogs = allDogs.map((obj) => obj.name.trim().toLowerCase());
 	const temperaments = useSelector((state) => state.temperaments);
 	const [button, setButton] = useState(true);
 	const [selectedValue, setSelectedValue] = useState("Temperaments");
+	const [imageUrl, setImageUrl] = useState("");
+	const history = useHistory();
 	const [errors, setErrors] = useState({
 		name: "",
-		min_height: "",
-		max_height: "",
-		min_weight: "",
-		max_weight: "",
+		height_min: "",
+		height_max: "",
+		weight_min: "",
+		weight_max: "",
 		life_span: "",
+		temperaments: "",
 		image: "",
 	});
 	const [form, setForm] = useState({
@@ -57,17 +38,25 @@ const Create = () => {
 		temperaments: [],
 	});
 
+	const handleOnBlur = (event) => {
+		const { name, value } = event.target;
+		const fieldErrors = validation({
+			...form,
+			[name]: value,
+		});
+		if (name === "image") setImageUrl(value);
+		setErrors((prevErrors) => ({
+			...prevErrors,
+			[name]: fieldErrors[name],
+		}));
+	};
+
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setForm({
 			...form,
 			[name]: value,
 		});
-		const fieldErrors = validate({
-			...form,
-			[name]: value,
-		});
-		setErrors((prevErrors) => ({ ...prevErrors, [name]: fieldErrors[name] }));
 	};
 
 	const handleSelect = (event) => {
@@ -88,8 +77,14 @@ const Create = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(createData(form));
+		dispatch(
+			createData({
+				...form,
+				life_span: `${form.life_span} years`,
+			})
+		);
 		alert("The new dog was added successfully");
+		history.push("./dogs");
 		setForm({
 			name: "",
 			height_min: "",
@@ -109,20 +104,21 @@ const Create = () => {
 	useEffect(() => {
 		if (
 			form.name.length > 0 &&
+			!nameDogs.includes(form.name.toLowerCase()) &&
 			form.height_min.length > 0 &&
 			form.height_max.length > 0 &&
 			form.weight_min.length > 0 &&
 			form.weight_max.length > 0
-		)
+		) {
 			setButton(false);
-		else setButton(true);
-	}, [form, setButton]);
+		} else setButton(true);
+	}, [form, setButton, nameDogs]);
 
 	return (
 		<form action="" id="form" onSubmit={handleSubmit} className={css.container}>
 			<div className={css.left_container}>
 				<div className={css.top_container}>
-					<img src={img_1} alt="load dog profile" />
+					{imageUrl && <img src={imageUrl} alt="load dog profile" />}
 				</div>
 				<div className={css.buttom_container}>
 					<div className={css.la_in}>
@@ -133,6 +129,7 @@ const Create = () => {
 							name="name"
 							required=""
 							placeholder="Name, example (akita)...."
+							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 							autoComplete="off"
 						/>
@@ -146,6 +143,7 @@ const Create = () => {
 							name="image"
 							required=""
 							placeholder="Image...."
+							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 							autoComplete="off"
 						/>
@@ -160,6 +158,7 @@ const Create = () => {
 							required=""
 							placeholder="Life, example (10 - 12)...."
 							value={form.life_span}
+							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
 						{errors.life_span && <p className={css.err}>{errors.life_span}</p>}
@@ -170,25 +169,13 @@ const Create = () => {
 			<div className={css.right_continer}>
 				<div className={css.top_content}>
 					<div className={css.label_input}>
-						<label htmlFor="height_min">Min Height </label>
-						<input
-							type="text"
-							value={form.height_min}
-							name="height_min"
-							placeholder="Min height..."
-							onChange={(event) => handleChange(event)}
-						/>
-						{errors.height_min && (
-							<p className={css.err}>{errors.height_min}</p>
-						)}
-					</div>
-					<div className={css.label_input}>
 						<label htmlFor="height_max">Max Height </label>
 						<input
 							type="text"
 							value={form.height_max}
 							name="height_max"
 							placeholder="Max height..."
+							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
 						{errors.height_max && (
@@ -196,16 +183,17 @@ const Create = () => {
 						)}
 					</div>
 					<div className={css.label_input}>
-						<label htmlFor="weight_min">Min Weight </label>
+						<label htmlFor="height_min">Min Height </label>
 						<input
 							type="text"
-							value={form.weight_min}
-							name="weight_min"
-							placeholder="Min weight..."
+							value={form.height_min}
+							name="height_min"
+							placeholder="Min height..."
+							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
-						{errors.weight_min && (
-							<p className={css.err}>{errors.weight_min}</p>
+						{errors.height_min && (
+							<p className={css.err}>{errors.height_min}</p>
 						)}
 					</div>
 					<div className={css.label_input}>
@@ -215,10 +203,25 @@ const Create = () => {
 							value={form.weight_max}
 							name="weight_max"
 							placeholder="Max weight..."
+							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
 						{errors.weight_max && (
 							<p className={css.err}>{errors.weight_max}</p>
+						)}
+					</div>
+					<div className={css.label_input}>
+						<label htmlFor="weight_min">Min Weight </label>
+						<input
+							type="text"
+							value={form.weight_min}
+							name="weight_min"
+							placeholder="Min weight..."
+							onBlur={(event) => handleOnBlur(event)}
+							onChange={(event) => handleChange(event)}
+						/>
+						{errors.weight_min && (
+							<p className={css.err}>{errors.weight_min}</p>
 						)}
 					</div>
 				</div>
@@ -247,9 +250,6 @@ const Create = () => {
 								{`${el}`}
 							</p>
 						))}
-						{errors.temperaments && (
-							<p className={css.err}>{errors.temperaments}</p>
-						)}
 					</div>
 				</div>
 
