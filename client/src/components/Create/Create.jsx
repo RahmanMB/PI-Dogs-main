@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 /** Import files */
 import { createData, getTemperaments } from "../../redux/actions";
+import img_1 from "../../assets/images/Fannci_3.png";
 /** Import styles */
 import css from "./Create.module.css";
 
@@ -120,146 +121,139 @@ const Create = () => {
 	return (
 		<form action="" id="form" onSubmit={handleSubmit} className={css.container}>
 			<div className={css.left_container}>
-				<div className={css.dog}></div>
-				<div className={css.content}>
-					<input
-						type="text"
-						value={form.name}
-						name="name"
-						required="required"
-						onChange={(event) => handleChange(event)}
-						autoComplete="off"
-					/>
-					<label htmlFor="name">Name:</label>
-					{errors.name && <div className={css.err}>{errors.name}</div>}
+				<div className={css.top_container}>
+					<img src={img_1} alt="load dog profile" />
 				</div>
-
-				<div className={css.content}>
-					<input
-						type="text"
-						value={form.image}
-						name="image"
-						required="required"
-						onChange={(event) => handleChange(event)}
-						autoComplete="off"
-					/>
-					<label htmlFor="image">Image:</label>
-					{errors.image && <div className={css.err}>{errors.image}</div>}
-				</div>
-
-				<div className={css.content}>
-					<input
-						type="text"
-						autoComplete="off"
-						name="life_span"
-						required="required"
-						value={form.life_span}
-						onChange={(event) => handleChange(event)}
-					/>
-					<label htmlFor="life_span">Life: </label>
-					{errors.life_span && (
-						<div className={css.err}>{errors.life_span}</div>
-					)}
+				<div className={css.buttom_container}>
+					<div className={css.la_in}>
+						<label htmlFor="name">Name:</label>
+						<input
+							type="text"
+							value={form.name}
+							name="name"
+							required=""
+							placeholder="Name, example (akita)...."
+							onChange={(event) => handleChange(event)}
+							autoComplete="off"
+						/>
+						{errors.name && <p className={css.err}>{errors.name}</p>}
+					</div>
+					<div className={css.la_in}>
+						<label htmlFor="image">Image:</label>
+						<input
+							type="text"
+							value={form.image}
+							name="image"
+							required=""
+							placeholder="Image...."
+							onChange={(event) => handleChange(event)}
+							autoComplete="off"
+						/>
+						{errors.image && <p className={css.err}>{errors.image}</p>}
+					</div>
+					<div className={css.la_in}>
+						<label htmlFor="life_span">Life: </label>
+						<input
+							type="text"
+							autoComplete="off"
+							name="life_span"
+							required=""
+							placeholder="Life, example (10 - 12)...."
+							value={form.life_span}
+							onChange={(event) => handleChange(event)}
+						/>
+						{errors.life_span && <p className={css.err}>{errors.life_span}</p>}
+					</div>
 				</div>
 			</div>
 
 			<div className={css.right_continer}>
 				<div className={css.top_content}>
-					<div className={css.left_top}>
-						<div className={css.label_input}>
-							<label htmlFor="height_min">Min Height </label>
-							<input
-								type="text"
-								value={form.height_min}
-								name="height_min"
-								placeholder="Min height..."
-								onChange={(event) => handleChange(event)}
-							/>
-							{errors.height_min && (
-								<div className={css.err}>{errors.height_min}</div>
-							)}
-						</div>
-
-						<div className={css.label_input}>
-							<label htmlFor="weight_min">Min Weight </label>
-							<input
-								type="text"
-								value={form.weight_min}
-								name="weight_min"
-								placeholder="Min weight..."
-								onChange={(event) => handleChange(event)}
-							/>
-							{errors.weight_min && (
-								<div className={css.err}>{errors.weight_min}</div>
-							)}
-						</div>
+					<div className={css.label_input}>
+						<label htmlFor="height_min">Min Height </label>
+						<input
+							type="text"
+							value={form.height_min}
+							name="height_min"
+							placeholder="Min height..."
+							onChange={(event) => handleChange(event)}
+						/>
+						{errors.height_min && (
+							<p className={css.err}>{errors.height_min}</p>
+						)}
 					</div>
+					<div className={css.label_input}>
+						<label htmlFor="height_max">Max Height </label>
+						<input
+							type="text"
+							value={form.height_max}
+							name="height_max"
+							placeholder="Max height..."
+							onChange={(event) => handleChange(event)}
+						/>
+						{errors.height_max && (
+							<p className={css.err}>{errors.height_max}</p>
+						)}
+					</div>
+					<div className={css.label_input}>
+						<label htmlFor="weight_min">Min Weight </label>
+						<input
+							type="text"
+							value={form.weight_min}
+							name="weight_min"
+							placeholder="Min weight..."
+							onChange={(event) => handleChange(event)}
+						/>
+						{errors.weight_min && (
+							<p className={css.err}>{errors.weight_min}</p>
+						)}
+					</div>
+					<div className={css.label_input}>
+						<label htmlFor="weight_max">Max Weight </label>
+						<input
+							type="text"
+							value={form.weight_max}
+							name="weight_max"
+							placeholder="Max weight..."
+							onChange={(event) => handleChange(event)}
+						/>
+						{errors.weight_max && (
+							<p className={css.err}>{errors.weight_max}</p>
+						)}
+					</div>
+				</div>
 
-					<div className={css.right_top}>
-						<div className={css.label_input}>
-							<label htmlFor="height_max">Max Height </label>
-							<input
-								type="text"
-								value={form.height_max}
-								name="height_max"
-								placeholder="Max height..."
-								onChange={(event) => handleChange(event)}
-							/>
-							{errors.height_max && (
-								<div className={css.err}>{errors.height_max}</div>
-							)}
-						</div>
-
-						<div className={css.label_input}>
-							<label htmlFor="weight_max">Max Weight </label>
-							<input
-								type="text"
-								value={form.weight_max}
-								name="weight_max"
-								placeholder="Max weight..."
-								onChange={(event) => handleChange(event)}
-							/>
-							{errors.weight_max && (
-								<div className={css.err}>{errors.weight_max}</div>
-							)}
-						</div>
+				<div className={css.mid_content}>
+					<div className={css.select}>
+						<p>Temperaments</p>
+						<select
+							value={selectedValue}
+							required
+							onChange={(event) => handleSelect(event)}>
+							<option disabled>Temperaments</option>
+							{temperaments.map((d) => (
+								<option value={d.name} key={d.name + Math.random()}>
+									{d.name}
+								</option>
+							))}
+						</select>
+					</div>
+					<div className={css.select_values}>
+						{form.temperaments.map((el) => (
+							<p
+								className={css.selected_values}
+								key={el}
+								onClick={() => handleDelete(el)}>
+								{`${el}`}
+							</p>
+						))}
+						{errors.temperaments && (
+							<p className={css.err}>{errors.temperaments}</p>
+						)}
 					</div>
 				</div>
 
 				<div className={css.bottom_content}>
-					<div className={css.temper}>
-						<div className={css.select}>
-							<p>
-								Temperaments:
-								<span style={{ color: "transparent" }}>_</span>
-							</p>
-							<select
-								value={selectedValue}
-								required
-								onChange={(event) => handleSelect(event)}>
-								<option disabled>Temperaments</option>
-								{temperaments.map((d) => (
-									<option value={d.name} key={d.name + Math.random()}>
-										{d.name}
-									</option>
-								))}
-							</select>
-						</div>
-
-						<div className={css.select_values}>
-							{form.temperaments.map((el) => (
-								<div
-									className={css.selected_values}
-									key={el}
-									onClick={() => handleDelete(el)}>
-									{`${el}`}
-								</div>
-							))}
-							{errors.temperaments && (
-								<div className={css.err}>{errors.temperaments}</div>
-							)}
-						</div>
-					</div>
 					<div className={css.cancel_create}>
 						<Link to="/dogs">
 							<button className={`${css.button_send} ${css.red}`}>
