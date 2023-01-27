@@ -57,6 +57,10 @@
 	src: url("./assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
 	font-weight: 600;
 }
+@font-face {
+	font-family: "MerriweatherLight";
+	src: url("./assets/fonts/Merriweather-Light.ttf") format("truetype");
+}
 * {
 	box-sizing: border-box;
 }

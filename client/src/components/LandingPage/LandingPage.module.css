@@ -28,10 +28,12 @@
 	color: rgba(173, 177, 176, 0.808);
 	justify-content: space-around;
 	align-self: center;
-	font-family: "MontserratRegular", sans-serif;
+	/* font-family: "MerriweatherLight"; */
 	flex-direction: row;
+	text-align: justify;
+	line-height: 36px;
 	letter-spacing: 2px;
-	font-size: 24px;
+	font-size: 22px;
 }
 .bottom__container {
 	position: relative;
