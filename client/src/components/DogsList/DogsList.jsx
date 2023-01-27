@@ -15,6 +15,7 @@ import SearchEngine from "./SearchEngine";
 import Card from "../Details/Card";
 import Paged from "./Paged";
 import image from "../../assets/images/Fannci_2.png";
+import Loader from "../Loaders/Loader";
 /** Import styles */
 import css from "./DogsList.module.css";
 
@@ -25,9 +26,11 @@ const DogsList = () => {
 	const [pagina, setPagina] = useState(1);
 	// eslint-disable-next-line no-unused-vars
 	const [porPagina, setPorPagina] = useState(8);
+	const [isLoading, setIsLoading] = useState(false);
 	const maximo = Math.ceil(allData.length / porPagina);
 
 	const hanldeRestartClick = () => {
+		setIsLoading(true);
 		dispatch(getAllDogs());
 	};
 

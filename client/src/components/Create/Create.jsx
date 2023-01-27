@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 /** Import files */
 import { createData, getTemperaments } from "../../redux/actions";
-import validation from "./validations";
+import regexValidation from "./RegexExpr";
 /** Import styles */
 import css from "./Create.module.css";
 
@@ -40,15 +40,12 @@ const Create = () => {
 
 	const handleOnBlur = (event) => {
 		const { name, value } = event.target;
-		const fieldErrors = validation({
-			...form,
-			[name]: value,
+		const fieldErrors = regexValidation(name, value);
+		setErrors({
+			...errors,
+			[name]: fieldErrors,
 		});
 		if (name === "image") setImageUrl(value);
-		setErrors((prevErrors) => ({
-			...prevErrors,
-			[name]: fieldErrors[name],
-		}));
 	};
 
 	const handleChange = (event) => {
@@ -105,7 +102,7 @@ const Create = () => {
 		if (
 			form.name.length > 0 &&
 			!nameDogs.includes(form.name.toLowerCase()) &&
-			form.height_min.length > 0 &&
+			form.height_max.length > 0 &&
 			form.height_max.length > 0 &&
 			form.weight_min.length > 0 &&
 			form.weight_max.length > 0

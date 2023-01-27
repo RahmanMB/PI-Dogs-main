@@ -75,16 +75,22 @@
 .la_in input::placeholder {
 	font-family: "GoergiaItalic", sans-serif;
 	color: #777;
+	background-color: transparent;
 }
 .la_in input:focus::placeholder {
 	opacity: 0;
 	transition: opacity 0.3s;
+	background-color: transparent;
+}
+.la_in input::after {
+	background-color: red;
 }
 
 .err {
 	color: #ff0000;
-	font-size: 16px;
-	padding: 3px 2px 3px 2px;
+	font-family: "MontserratMedium", sans-serif;
+	font-size: 12px;
+	padding: 3px 2px 3px 15px;
 }
 .right_continer {
 	width: 61.8%;
