@@ -39,7 +39,7 @@ const SearchEngine = () => {
 				className={css.search__input}
 				type="text"
 				name="search"
-				placeholder="Search..."
+				placeholder="Search . . ."
 				autoComplete="off"
 				value={search}
 				onKeyDown={(event) => onKeyDown(event)}

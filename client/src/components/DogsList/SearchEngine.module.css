@@ -6,7 +6,7 @@
 }
 
 .search__input {
-	font-family: inherit;
+	font-family: "MontserratRegular", sans-serif;
 	font-size: 1rem;
 	background-color: #f4f2f2af;
 	border: none;
@@ -16,6 +16,9 @@
 	width: 12em;
 	transition: all ease-in-out 0.5s;
 	margin-right: -2rem;
+}
+.search__input::placeholder {
+	font-family: "GoergiaItalic", sans-serif;
 }
 
 .search__input:hover,

@@ -16,7 +16,7 @@ import Card from "../Details/Card";
 import Paged from "./Paged";
 import image from "../../assets/images/Fannci_2.png";
 /** Import styles */
-import css from "./Dogs.module.css";
+import css from "./DogsList.module.css";
 
 const DogsList = () => {
 	const dispatch = useDispatch();
@@ -78,13 +78,13 @@ const DogsList = () => {
 				<div className={css.content}>
 					<p>Filter</p>
 					<div className={css.content_inf}>
-						<p>data</p>
+						<p>Data</p>
 						<select onChange={(event) => handleFilterDataChange(event)}>
 							<option value="all">all</option>
 							<option value="false">Api</option>
 							<option value="true">DataBase</option>
 						</select>
-						<p>temperament</p>
+						<p>Temperament</p>
 						<select onChange={(event) => hanldeFilterTempChange(event)}>
 							{allTemperaments.map(({ id, name }) => (
 								<option value={name} key={id}>
@@ -98,12 +98,12 @@ const DogsList = () => {
 				<div className={css.content}>
 					<p>Order</p>
 					<div className={css.content_inf}>
-						<p>name</p>
+						<p>Name</p>
 						<select onChange={(event) => handleOrderNameChange(event)}>
 							<option value="asc">Asc</option>
 							<option value="desc">Desc</option>
 						</select>
-						<p>weight</p>
+						<p>Weight</p>
 						<select onChange={(event) => handleOrderWeightChange(event)}>
 							<option value="min">menor - mayor</option>
 							<option value="max">mayor - menor</option>
@@ -113,7 +113,7 @@ const DogsList = () => {
 
 				<div className={css.landing_create}>
 					<Link to="/">
-						<button className={css.landing_button}>
+						<button className={`${css.landing_button} ${css.red}`}>
 							<span>Back</span>
 							<svg viewBox="0 0 13 10" height="10px" width="15px">
 								<path d="M1,5 L11,5"></path>
@@ -122,7 +122,7 @@ const DogsList = () => {
 						</button>
 					</Link>
 					<Link to="/create">
-						<button className={css.landing_button}>
+						<button className={`${css.landing_button} ${css.blue}`}>
 							<span>Create</span>
 							<svg viewBox="0 0 13 10" height="10px" width="15px">
 								<path d="M1,5 L11,5"></path>

@@ -1,84 +1,135 @@
 .container {
 	background-color: rgba(17, 17, 17, 0.201);
 	border-radius: 1.618rem;
-	box-shadow: 0 1em 1.618rem rgba(80, 79, 82, 0.322);
-	position: relative;
+	display: flex;
+	flex-direction: row;
+	width: 1000px;
+	height: 618.046px;
 	overflow: hidden;
-	width: 900px;
-	height: 556.322px;
 }
-
 .left_container {
-	background-color: transparent;
+	width: 61.8%;
+	height: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	flex-direction: column;
-	padding: 1.618rem 2.618rem;
-	height: 100%;
-	text-align: center;
-	color: rgba(322, 322, 322, 0.618);
-	width: 61.805%;
 }
-.left_container .hachiko {
-	font-size: 1.322rem;
-	line-height: 1.5;
+.left_container .title {
+	font-family: "MontserratSemiBold", sans-serif;
+	color: rgba(136, 136, 136, 0.9);
+	text-transform: uppercase;
+	font-size: 36px;
+}
+.left_container .text {
+	display: flex;
+	align-self: center;
+	padding: 20px;
+	color: rgba(173, 177, 176, 0.808);
+	justify-content: space-around;
+	align-self: center;
+	font-family: "MontserratRegular", sans-serif;
+	flex-direction: row;
+	letter-spacing: 2px;
+	font-size: 24px;
+}
+.bottom__container {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	border: 0;
+	vertical-align: middle;
+	text-decoration: none;
+	background: transparent;
+	padding: 0;
+	font-family: "MontserratSemiBold", sans-serif;
+}
+
+.button__container button {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	border: 0;
+	vertical-align: middle;
+	text-decoration: none;
+	background: transparent;
+	padding: 0;
+	font-family: "MontserratSemiBold", sans-serif;
+}
+.button__container button.learn_more {
+	width: 12rem;
+	height: auto;
+}
+.button__container button.learn_more .circle {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: relative;
+	display: block;
+	margin: 0;
+	width: 3rem;
+	height: 3rem;
+	background: #282936a4;
+	border-radius: 1.625rem;
+}
+.button__container button.learn_more .circle .icon {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background: rgba(185, 181, 181, 0.76);
+}
+.button__container button.learn_more .circle .icon.arrow {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	left: 0.625rem;
+	width: 1.125rem;
+	height: 0.125rem;
+	background: none;
+}
+.button__container button.learn_more .circle .icon.arrow::before {
+	position: absolute;
+	content: "";
+	top: -0.29rem;
+	right: 0.0625rem;
+	width: 0.625rem;
+	height: 0.625rem;
+	border-top: 0.125rem solid #fff;
+	border-right: 0.125rem solid #fff;
+	transform: rotate(45deg);
+}
+.button__container button.learn_more .button_text {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0.75rem 0;
+	margin: 0 0 0 1.85rem;
+	color: #a8a8a8a4;
+	font-weight: 600;
 	letter-spacing: 1px;
-	text-transform: inherit;
+	line-height: 1.6;
+	text-align: center;
+	text-transform: uppercase;
+}
+.button__container button:hover .circle {
+	width: 100%;
+}
+.button__container button:hover .circle .icon.arrow {
+	background: #fff;
+	transform: translate(1rem, 0);
+}
+.button__container button:hover .button_text {
+	color: #fff;
 }
 
 .right_container {
-	position: absolute;
-	top: 0;
-	left: 61.805%;
-	width: 38.195%;
+	width: 38.2%;
 	height: 100%;
-	overflow: hidden;
-	transition: transform 0.6s ease-in-out;
-}
-.right_container .image {
-	height: 61.805%;
-	width: 100%;
+	background-image: url(../../assets/images/Fannci_7.png);
 	background-size: cover;
-}
-.right_container .text {
-	font-family: "Cascadia Code";
-	font-size: 2.618rem;
-	font-weight: bold;
-	color: #807079;
-	text-transform: uppercase;
-	letter-spacing: 1.618px;
-	padding: 10px 20px 20px 20px;
-	text-align: center;
-}
-.right_container .button {
-	position: absolute;
-	background-color: rgba(322, 322, 322, 0.322);
-	border: none;
-	border-radius: 1.618rem;
-	font-size: 14px;
-	text-transform: uppercase;
-	bottom: 40px;
-	right: 60px;
-	padding: 10px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 3px;
-	transition: transform 80ms ease-in;
-}
-.icon {
-	width: 30px;
-	bottom: 5px;
-	position: absolute;
-}
-.right_container .button:active {
-	transform: scale(1.618);
-}
-.right_container .button:hover {
-	background-color: rgba(322, 322, 322, 0.644);
-	box-shadow: 1em 1em 1.618rem rgba(168, 168, 168, 0.322);
-	font-size: 16px;
-}
-.right_container .button:focus {
-	outline: none;
+	background-position: center;
+	background-repeat: no-repeat;
 }

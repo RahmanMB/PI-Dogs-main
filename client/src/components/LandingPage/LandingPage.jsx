@@ -1,9 +1,7 @@
 /** Import package */
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 /** Import files */
-import img_1 from "../../assets/images/Fannci_18.png";
-import icon_1 from "../../assets/icons/arrow-narrow-right.png";
 /** Import styles */
 import css from "./LandingPage.module.css";
 
@@ -11,25 +9,38 @@ const LandingPage = () => {
 	return (
 		<div className={css.container}>
 			<div className={css.left_container}>
-				<p className={css.hachiko}>
+				<p className={css.title}>The Dog Hachiko</p>
+				<p className={css.text}>
 					The story of Hachiko, with his undying and heartbreaking loyalty, is a
 					poignant reminder that dogs are noble and loving beings who love us
 					unconditionally with a devotion rarely seen in humans, a true treasure
 					in our lives.
 				</p>
+				<div className={css.bottom__container}>
+					<Link to="/dogs">
+						<div className={css.button__container}>
+							<button className={css.learn_more}>
+								<span className={css.circle} aria-hidden="true">
+									<span className={`${css.icon} ${css.arrow}`}></span>
+								</span>
+								<span className={css.button_text}> Get Started</span>
+							</button>
+						</div>
+					</Link>
+				</div>
 			</div>
-			<div className={css.right_container}>
-				<img src={img_1} alt="Hachiko geomtry art" className={css.image} />
-				<span className={css.text}>The Dog</span>
-				<h2 className={css.text}>Hachiko</h2>
-				<NavLink to="/dogs">
-					<button className={css.button}>
-						start <img src={icon_1} alt="" className={css.icon} />
-					</button>
-				</NavLink>
-			</div>
+
+			<div className={css.right_container}></div>
 		</div>
 	);
 };
 
 export default LandingPage;
+/*
+<button class="learn-more">
+  <span class="circle" aria-hidden="true">
+  <span class="icon arrow"></span>
+  </span>
+  <span class="button-text">Learn More</span>
+</button>
+*/

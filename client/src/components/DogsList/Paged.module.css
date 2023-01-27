@@ -12,6 +12,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-family: "textfonttt", sans-serif;
 	width: 1.8rem;
 	position: relative;
 	cursor: pointer;
@@ -27,10 +28,33 @@
 	background-color: #4b4949;
 	cursor: no-drop;
 }
+.container p {
+	font-family: "MontserratRegular", sans-serif;
+}
 
 .container input {
-	width: 18px;
+	width: 30px;
+	height: 30px;
 	display: flex;
 	border: none;
+	font-family: "MontserratRegular", sans-serif;
+	font-size: 16px;
 	background-color: transparent;
+	outline: none;
+	padding-left: 12px;
+}
+.container input:hover {
+	border: none;
+	border-radius: 50%;
+	background-color: rgba(16, 100, 100, 0.123);
+	outline: none;
+}
+.container input:hover:before {
+	outline: none;
+	border: none;
+}
+.container input:active {
+	border: none;
+	outline: none;
+	background-color: rgba(6, 158, 158, 0.555);
 }

@@ -1,3 +1,62 @@
+@font-face {
+	font-family: "textfontss";
+	src: url("./assets/fonts/cmunss.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "textfonttt";
+	src: url("./assets/fonts/cmuntt.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+/*
+	font-family: "MontserratBold", sans-serif;
+*/
+@font-face {
+	font-family: "GoergiaRegular";
+	src: url("./assets/fonts/georgia.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "GoergiaItalic";
+	src: url("./assets/fonts/georgiai.ttf") format("truetype");
+	font-style: italic;
+}
+@font-face {
+	font-family: "MontserratRegular";
+	src: url("./assets/fonts/Montserrat-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "MontserratMedium";
+	src: url("./assets/fonts/Montserrat-Medium.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "MontserratBold";
+	src: url("./assets/fonts/Montserrat-Bold.ttf") format("truetype");
+	font-weight: bold;
+}
+@font-face {
+	font-family: "MontserratItalic";
+	src: url("./assets/fonts/Montserrat-Italic.ttf") format("truetype");
+	font-style: italic;
+}
+@font-face {
+	font-family: "MontserratMediumItalic";
+	src: url("./assets/fonts/Montserrat-MediumItalic.ttf") format("truetype");
+	font-weight: medium;
+	font-style: italic;
+}
+@font-face {
+	font-family: "MontserratSemiBold";
+	src: url("./assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
+	font-weight: 600;
+}
 * {
 	box-sizing: border-box;
 }

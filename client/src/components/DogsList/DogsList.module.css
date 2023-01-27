@@ -9,7 +9,7 @@
 }
 
 .left {
-	background-color: rgba(201, 201, 201, 0.322);
+	background-color: rgba(186, 186, 186, 0.322);
 	width: 400px;
 	height: 100%;
 	display: flex;
@@ -25,45 +25,51 @@
 	overflow: hidden;
 	padding: 15px 0 1rem 0;
 }
-.left .image_border .image {
+.image_border .image {
 	width: 280px;
 	border-radius: 50%;
 	cursor: pointer;
 }
-.left .content {
+.content {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
 	padding: 10px 0 20px 20px;
 }
-.left .content .content_inf {
+.content .content_inf {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 10px;
-	padding: 2px 0 2px 1.618rem;
+	padding: 2px 0 2px 1rem;
 	align-items: center;
 }
-.left .content p {
+.content p {
 	margin: 0;
+	font-family: "MontserratSemiBold", sans-serif;
+	color: #272121d2;
 	font-size: 1.2rem;
 }
 .content .content_inf p {
 	margin: 0;
+	font-family: "MontserratMedium", sans-serif;
+	color: #080933c4;
 	font-size: 1rem;
 }
 .content .content_inf select {
 	padding: 3px;
 	margin: 0;
-	font-size: 12px;
-	color: #2e2b2b;
+	font-size: 13px;
+	color: #000000c4;
 	border-radius: 10px;
 	background-color: #f4f2f2af;
+	font-family: "MontserratRegular", sans-serif;
 	text-transform: uppercase;
 }
 .content .content_inf select option {
+	font-family: "textfontss", sans-serif;
 	padding: 0px;
-	font-size: 0.618rem;
+	font-size: 12pxrem;
 }
 .landing_create {
 	display: flex;
@@ -88,22 +94,28 @@
 	left: 0;
 	display: block;
 	border-radius: 50px;
-	background: #8df4f766;
 	width: 35px;
 	height: 35px;
 	transition: all 0.3s ease;
 }
+.red:before {
+	background: #f78dbf66;
+}
+.blue:before {
+	background: #8df4f766;
+}
 .landing_button span {
 	position: relative;
-	font-family: "Ubuntu", sans-serif;
-	font-size: 14px;
-	font-weight: 600;
+	font-family: "MontserratBold", sans-serif;
+	font-size: 16px;
+	font-weight: bold;
 	letter-spacing: 0.05em;
 	color: #234567;
 }
 .landing_button svg {
 	position: relative;
 	top: 0;
+	font-family: "MontserratBold", sans-serif;
 	margin-left: 10px;
 	fill: none;
 	stroke-linecap: round;
@@ -113,9 +125,20 @@
 	transform: translateX(-5px);
 	transition: all 0.3s ease;
 }
+.red svg {
+	stroke: #9e466ffa;
+}
+.blue svg {
+	stroke: #234567;
+}
 .landing_button:hover:before {
 	width: 100%;
-	background: #8df4f7c5;
+}
+.red:hover:before {
+	stroke: #f78dbfd2;
+}
+.blue:hover:before {
+	stroke: #8df4f7c5;
 }
 .landing_button:hover svg {
 	transform: translateX(0);

@@ -57,7 +57,7 @@ const DetailCard = () => {
 				</div>
 				<div className={css.text_detail}>
 					<p>
-						life: <span>{life_span}</span>
+						Life: <span>{life_span}</span>
 					</p>
 				</div>
 			</div>
@@ -65,7 +65,7 @@ const DetailCard = () => {
 			<div className={css.right_detail}>
 				<img src={image} alt={`${name} dog`} className={css.image} />
 				<Link to="/dogs">
-					<button type="">x</button>
+					<button type="">X</button>
 				</Link>
 			</div>
 		</div>

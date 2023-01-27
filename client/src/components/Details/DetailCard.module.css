@@ -24,39 +24,48 @@
 .left_detail .name_detail {
 	color: rgba(210, 210, 253);
 	text-align: center;
+	font-family: "MontserratBold", sans-serif;
+	font-weight: bold;
 	font-size: 1.6rem;
 }
 .left_detail .text_detail {
-	color: rgba(189, 182, 182, 0.795);
+	color: rgba(255, 255, 255, 0.795);
 	text-align: center;
+	white-space: nowrap;
 }
 .left_detail .text_detail p {
-	padding: 10px;
-	text-transform: uppercase;
+	padding: 5px;
+	font-size: 1.2rem;
+	font-family: "MontserratSemiBold", sans-serif;
 	font-weight: 600;
 }
 .left_detail .text_detail span {
-	color: rgba(155, 155, 155, 0.8);
+	color: rgba(187, 184, 184, 0.938);
+	font-size: 1rem;
 	padding-inline: 10px;
+	font-family: "MontserratMedium", sans-serif;
 	font-weight: 500;
-}
-.left_detail .temp_detail {
-	font-size: 1.2rem;
 }
 .left_detail .temp_detail h4 {
 	color: rgb(210, 210, 253, 0.795);
+	font-family: "MontserratSemiBold", sans-serif;
+	font-weight: 600;
 	font-size: 1.4rem;
 }
 .left_detail .temp_detail ul {
 	color: rgba(210, 210, 253, 0.795);
 	list-style-type: none;
-	padding-bottom: 5px;
+	padding-top: 10px;
 }
 .left_detail .temp_detail li {
 	color: rgba(201, 201, 240, 0.603);
+	display: flex;
 	font-size: 1.2rem;
 	text-align: center;
+	align-items: flex-start;
+	font-family: "textfonttt", sans-serif;
 	padding-top: 5px;
+	padding-left: 20px;
 }
 
 .right_detail {
@@ -73,6 +82,8 @@
 	object-fit: cover;
 }
 .right_detail button {
+	font-family: "MontserratBold", sans-serif;
+	font-weight: bold;
 	position: absolute;
 	top: 28px;
 	right: 28px;
@@ -86,6 +97,6 @@
 	color: rgba(247, 242, 242, 0.664);
 }
 .right_detail button:hover {
-	transform: scale(1.322);
+	transform: scale(1.4);
 	background: rgba(228, 31, 31, 0.618);
 }

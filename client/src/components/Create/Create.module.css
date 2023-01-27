@@ -20,7 +20,6 @@
 	position: relative;
 	gap: 1rem;
 }
-/**!-------------------------------------------------------------------------------------------*/
 .top_container {
 	height: 61.8%;
 	overflow: hidden;
@@ -30,11 +29,11 @@
 }
 .top_container img {
 	border-radius: 50%;
+	border: 2px solid rgba(156, 148, 148, 0.39);
 	width: 280px;
 	height: 280px;
 	object-fit: cover;
 }
-/**!-------------------------------------------------------------------------------------------*/
 .buttom_container {
 	height: 38.2%;
 	padding: 0 20px;
@@ -47,11 +46,14 @@
 }
 .la_in label {
 	color: #c1cada;
-	font-size: 1.1rem;
+	font-size: 1rem;
+	font-family: "MontserratSemiBold", sans-serif;
+	letter-spacing: 1px;
 }
 .la_in input {
 	line-height: 24px;
-	font-size: 0.9rem;
+	font-size: 1rem;
+	font-family: "MontserratMedium", sans-serif;
 	border: 2px solid transparent;
 	border-bottom-color: rgb(160, 157, 157);
 	padding: 2px;
@@ -71,6 +73,7 @@
 	background-color: #63636d98;
 }
 .la_in input::placeholder {
+	font-family: "GoergiaItalic", sans-serif;
 	color: #777;
 }
 .la_in input:focus::placeholder {
@@ -104,16 +107,18 @@
 }
 .label_input label {
 	color: #e9e2e2;
+	font-family: "MontserratSemiBold", sans-serif;
 	font-size: 18px;
 	letter-spacing: 1.5px;
 	padding-bottom: 5px;
 }
 .label_input input {
-	border-radius: 8px;
+	border-radius: 10px;
+	font-family: "textfonttt", sans-serif;
 	background-color: #efeff58c;
-	padding: 8px 0 8px 15px;
+	padding: 5px 0 4px 15px;
 	width: 95%;
-	font-size: 16px;
+	font-size: 18px;
 	color: #3a3838;
 	border: 0 solid #dadaf76e;
 }
@@ -126,6 +131,7 @@
 }
 .label_input input::placeholder {
 	color: #63636d;
+	font-family: "GoergiaItalic", sans-serif;
 	font-style: italic;
 }
 
@@ -140,16 +146,18 @@
 	justify-content: space-evenly;
 }
 .select p {
+	font-family: "MontserratSemiBold", sans-serif;
 	font-size: 1.4rem;
+	font-weight: bold;
 	color: #b2bac8;
-	padding-left: 10px;
-	padding-top: 3px;
+	padding-top: 8px;
 }
 .select select {
 	font-size: 1rem;
-	padding: 5px;
+	font-family: "MontserratRegular", sans-serif;
+	padding: 8px;
 	background-color: #dadaf76e;
-	color: rgb(63, 58, 58);
+	color: rgb(53, 52, 52);
 	border: none;
 	border-radius: 8px;
 }
@@ -161,6 +169,7 @@
 	font-size: 1rem;
 	background-color: #e9e2e2a6;
 	color: #63636d;
+	font-family: "textfontss", sans-serif;
 }
 .select_values {
 	display: grid;
@@ -171,6 +180,7 @@
 	display: grid;
 	white-space: nowrap;
 	padding: 8px 0 8px 20px;
+	font-family: "MontserratRegular", sans-serif;
 	font-size: 1.2rem;
 	margin: 10px;
 	border-radius: 20px;
@@ -228,10 +238,10 @@
 }
 .button_send span {
 	position: relative;
-	font-family: "Ubuntu", sans-serif;
+	font-family: "MontserratSemiBold", sans-serif;
 	font-size: 18px;
-	font-weight: 700;
-	letter-spacing: 0.05em;
+	font-weight: 600;
+	letter-spacing: 2px;
 	color: #234567;
 }
 .red span {
