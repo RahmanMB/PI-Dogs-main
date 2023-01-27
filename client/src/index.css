@@ -61,6 +61,18 @@
 	font-family: "MerriweatherLight";
 	src: url("./assets/fonts/Merriweather-Light.ttf") format("truetype");
 }
+@font-face {
+	font-family: "MerriweatherItalic";
+	src: url("./assets/fonts/Merriweather-Italic.ttf") format("truetype");
+}
+@font-face {
+	font-family: "MerriweatherlightItalic";
+	src: url("./assets/fonts/Merriweather-LightItalic.ttf") format("truetype");
+}
+@font-face {
+	font-family: "MerriweatherRegular";
+	src: url("./assets/fonts/Merriweather-Regular.ttf") format("truetype");
+}
 * {
 	box-sizing: border-box;
 }
