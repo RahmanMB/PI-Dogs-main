@@ -38,22 +38,21 @@ const Create = () => {
 		temperaments: [],
 	});
 
-	const handleOnBlur = (event) => {
-		const { name, value } = event.target;
-		const fieldErrors = regexValidation(name, value);
-		setErrors({
-			...errors,
-			[name]: fieldErrors,
-		});
-		if (name === "image") setImageUrl(value);
-	};
-
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setForm({
 			...form,
 			[name]: value,
 		});
+	};
+	const handleOnBlur = (event) => {
+		const { name, value } = event.target;
+		const fieldErrors = regexValidation(name, value, form);
+		setErrors({
+			...errors,
+			[name]: fieldErrors,
+		});
+		if (name === "image") setImageUrl(value);
 	};
 
 	const handleSelect = (event) => {
