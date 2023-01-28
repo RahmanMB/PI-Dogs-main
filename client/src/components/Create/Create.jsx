@@ -162,23 +162,8 @@ const Create = () => {
 					</div>
 				</div>
 			</div>
-
 			<div className={css.right_continer}>
 				<div className={css.top_content}>
-					<div className={css.label_input}>
-						<label htmlFor="height_max">Max Height </label>
-						<input
-							type="text"
-							value={form.height_max}
-							name="height_max"
-							placeholder="Max height..."
-							onBlur={(event) => handleOnBlur(event)}
-							onChange={(event) => handleChange(event)}
-						/>
-						{errors.height_max && (
-							<p className={css.err}>{errors.height_max}</p>
-						)}
-					</div>
 					<div className={css.label_input}>
 						<label htmlFor="height_min">Min Height </label>
 						<input
@@ -194,17 +179,17 @@ const Create = () => {
 						)}
 					</div>
 					<div className={css.label_input}>
-						<label htmlFor="weight_max">Max Weight </label>
+						<label htmlFor="height_max">Max Height </label>
 						<input
 							type="text"
-							value={form.weight_max}
-							name="weight_max"
-							placeholder="Max weight..."
+							value={form.height_max}
+							name="height_max"
+							placeholder="Max height..."
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
-						{errors.weight_max && (
-							<p className={css.err}>{errors.weight_max}</p>
+						{errors.height_max && (
+							<p className={css.err}>{errors.height_max}</p>
 						)}
 					</div>
 					<div className={css.label_input}>
@@ -219,6 +204,20 @@ const Create = () => {
 						/>
 						{errors.weight_min && (
 							<p className={css.err}>{errors.weight_min}</p>
+						)}
+					</div>
+					<div className={css.label_input}>
+						<label htmlFor="weight_max">Max Weight </label>
+						<input
+							type="text"
+							value={form.weight_max}
+							name="weight_max"
+							placeholder="Max weight..."
+							onBlur={(event) => handleOnBlur(event)}
+							onChange={(event) => handleChange(event)}
+						/>
+						{errors.weight_max && (
+							<p className={css.err}>{errors.weight_max}</p>
 						)}
 					</div>
 				</div>

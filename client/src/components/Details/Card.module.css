@@ -53,13 +53,15 @@
 	justify-content: center;
 }
 .temperaments {
-	font-family: "GoergiaRegular", sans-serif;
+	font-family: "RalewayRegular", sans-serif;
 	color: #bebcbcd2;
-	font-size: 1.2rem;
+	font-size: 16px;
 	margin-top: 0.2rem;
 	display: flex;
 	justify-content: flex-start;
+	letter-spacing: 1.322px;
 	padding: 8px;
+	line-height: 22px;
 }
 .weight {
 	font-family: "MontserratBold", sans-serif;

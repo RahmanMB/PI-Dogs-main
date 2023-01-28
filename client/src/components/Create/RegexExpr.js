@@ -1,9 +1,6 @@
-/* const nameRegex =
-  /^[a-zA-ZÃ§Ã‡Ä±ÄŸÄžÄ°Ã¶Ã-ÅŸÅžÃ¼Ãœ]+(?:\s[a-zA-ZÃ§Ã‡Ä±ÄŸÄžÄ°Ã¶Ã-ÅŸÅžÃ¼Ãœ]+)+$/; */
 const nameRegex =
 	/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(([',. -][a-zA-ZÀ-ÖØ-öø-ÿ])?[a-zA-ZÀ-ÖØ-öø-ÿ]*)*$/;
-const numberRegex =
-	/^(?!0\d|[2-9]\d{1}|1[8-9]\d|190)[3-9]|1\d{1,2}(\.\d{1,2})?$/;
+const numberRegex = /^-?[0-9]+(\.[0-9]+)?$/;
 const urlRegex =
 	// eslint-disable-next-line no-useless-escape
 	/^((https?:)(\/\/\/?)([\w]*(?::[\w]*)?@)?([\d\w\.-]+)(?::(\d+))?)?([\/\\\w\.()-]*)?(?:([?][^#]*)?(#.*)?)*/gim;

@@ -73,6 +73,18 @@
 	font-family: "MerriweatherRegular";
 	src: url("./assets/fonts/Merriweather-Regular.ttf") format("truetype");
 }
+@font-face {
+	font-family: "RalewayLight";
+	src: url("./assets/fonts/Raleway-Light.ttf") format("truetype");
+}
+@font-face {
+	font-family: "RalewayRegular";
+	src: url("./assets/fonts/Raleway-Regular.ttf") format("truetype");
+}
+@font-face {
+	font-family: "RalewayMedium";
+	src: url("./assets/fonts/Raleway-Medium.ttf") format("truetype");
+}
 * {
 	box-sizing: border-box;
 }
@@ -226,7 +238,7 @@ select {
 	vertical-align: middle;
 }
 body {
-	background-image: url(./assets/images/bgi_6.jpg);
+	background-image: url(./assets/images/bgi.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	min-width: 100%;
