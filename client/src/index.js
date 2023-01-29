@@ -11,7 +11,7 @@ import store from "./redux/store/index";
 import "./index.css";
 
 /** Port configuration for axios */
-axios.defaults.baseURL = process.env.React_APP_API || "http://localhost:3001";
+axios.defaults.baseURL = "http://localhost:3001";
 
 ReactDOM.render(
 	<Provider store={store}>
