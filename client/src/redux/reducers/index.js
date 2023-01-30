@@ -8,6 +8,8 @@ import {
 	ORDER_NAME,
 	ORDER_WEIGHT,
 	DETAIL_TARGET,
+	DELETE_DATA,
+	UPDATE_DATA,
 } from "../types";
 
 /* Setting the initial state of the application. */
@@ -71,6 +73,18 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				target: action.payload,
+			};
+
+		case UPDATE_DATA:
+			return {
+				...state,
+				data: action.payload,
+			};
+
+		case DELETE_DATA:
+			return {
+				...state,
+				dogs: state.dogs.filter((dog) => dog.id !== action.payload.id),
 			};
 
 		default:

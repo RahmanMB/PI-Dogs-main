@@ -67,6 +67,68 @@
 	padding-top: 5px;
 	padding-left: 20px;
 }
+.put__delete {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: row;
+	gap: 15px;
+}
+.put__delete .put__delete_button {
+	position: relative;
+	margin: auto;
+	padding: 9px 12px;
+	transition: all 0.2s ease;
+	border: none;
+	background: none;
+}
+.put__delete_button:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	border-radius: 50px;
+	width: 35px;
+	height: 35px;
+	transition: all 0.3s ease;
+}
+.red__btn:before {
+	background: #8df4f766;
+}
+.blue_btn:before {
+	background: #f78dbf66;
+}
+.put__delete_button span {
+	position: relative;
+	font-family: "MontserratBold", sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+	color: #234567;
+}
+.red__btn:before {
+	background: #8df4f766;
+}
+.blue_btn:before {
+	background: #f78dbf66;
+}
+.put__delete_button:hover:before {
+	width: 100%;
+}
+.red__btn:hover:before {
+	stroke: #8df4f7c5;
+}
+.blue_btn:hover:before {
+	stroke: #f78dbfd2;
+}
+.put__delete_button:hover svg {
+	transform: translateX(0);
+}
+.put__delete_button:active {
+	transform: scale(0.95);
+}
 
 .right_detail {
 	background-color: #0f0;

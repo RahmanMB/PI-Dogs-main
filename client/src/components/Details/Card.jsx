@@ -10,7 +10,7 @@ const Card = ({ id, image, name, temperaments, weight_min, weight_max }) => {
 		<div className={css.card}>
 			<div className={css.top_card}>
 				<div className={css.img}>
-					<Link to={`/dogs/${id}`}>
+					<Link to={`/dogs/details/${id}`}>
 						<img
 							className={css.image}
 							src={image}

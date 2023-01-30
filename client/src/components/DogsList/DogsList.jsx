@@ -61,15 +61,10 @@ const DogsList = () => {
 
 	useEffect(() => {
 		setIsLoading(true);
-		dispatch(getAllDogs());
-		dispatch(getTemperaments());
+		dispatch(getAllDogs())
+			.then(dispatch(getTemperaments()))
+			.then(() => setIsLoading(false));
 	}, [dispatch]);
-
-	useEffect(() => {
-		setTimeout(() => {
-			setIsLoading(false);
-		}, 1200);
-	}, [allData, allTemperaments]);
 
 	return (
 		<div>
@@ -128,14 +123,14 @@ const DogsList = () => {
 						<div className={css.landing_create}>
 							<Link to="/">
 								<button className={`${css.landing_button} ${css.red}`}>
-									<span>Back</span>
+									<span style={{ color: "#920949d2" }}>Back</span>
 									<svg viewBox="0 0 13 10" height="10px" width="15px">
 										<path d="M1,5 L11,5"></path>
 										<polyline points="8 1 12 5 8 9"></polyline>
 									</svg>
 								</button>
 							</Link>
-							<Link to="/create">
+							<Link to="/dogs/create">
 								<button className={`${css.landing_button} ${css.blue}`}>
 									<span>Create</span>
 									<svg viewBox="0 0 13 10" height="10px" width="15px">

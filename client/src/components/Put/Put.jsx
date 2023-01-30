@@ -1,14 +1,14 @@
 /** Import packages */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 /** Import files */
-import { createData, getTemperaments } from "../../redux/actions";
-import regexValidation from "./RegexExpr";
+import { getTemperaments, updateData } from "../../redux/actions";
+import regexValidation from "../Create/RegexExpr";
 /** Import styles */
-import css from "./Create.module.css";
+import css from "./Put.module.css";
 
-const Create = () => {
+const Put = () => {
 	const dispatch = useDispatch();
 	const allDogs = useSelector((state) => state.dogs);
 	const nameDogs = allDogs.map((obj) => obj.name.trim().toLowerCase());
@@ -17,6 +17,9 @@ const Create = () => {
 	const [selectedValue, setSelectedValue] = useState("Temperaments");
 	const [imageUrl, setImageUrl] = useState("");
 	const history = useHistory();
+
+	const { id } = useParams();
+	const filterData = allDogs.find((dog) => dog.id === Number(id));
 	const [errors, setErrors] = useState({
 		name: "",
 		height_min: "",
@@ -27,28 +30,28 @@ const Create = () => {
 		temperaments: "",
 		image: "",
 	});
-	const [form, setForm] = useState({
-		name: "",
-		height_min: "",
-		height_max: "",
-		weight_min: "",
-		weight_max: "",
-		life_span: "",
-		image: "",
-		temperaments: [],
+	const [data, setData] = useState({
+		name: filterData.name,
+		height_min: filterData.height_min,
+		height_max: filterData.height_max,
+		weight_min: filterData.weight_min,
+		weight_max: filterData.weight_max,
+		life_span: filterData.life_span.split(" ").slice(0, 3).join(" "),
+		temperaments: filterData.temperaments.split(",").map((el) => el.trim()),
+		image: filterData.image,
 	});
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
-		setForm({
-			...form,
+		setData({
+			...data,
 			[name]: value,
 		});
 	};
 
 	const handleOnBlur = (event) => {
 		const { name, value } = event.target;
-		const fieldErrors = regexValidation(name, value, form, nameDogs);
+		const fieldErrors = regexValidation(name, value, data, nameDogs);
 		setErrors({
 			...errors,
 			[name]: fieldErrors,
@@ -59,39 +62,31 @@ const Create = () => {
 	const handleSelect = (event) => {
 		const { value } = event.target;
 		setSelectedValue(value);
-		setForm({
-			...form,
-			temperaments: [...form.temperaments, value],
+		setData({
+			...data,
+			temperaments: [...data.temperaments, value],
 		});
 	};
 
 	const handleDelete = (item) => {
-		setForm({
-			...form,
-			temperaments: form.temperaments.filter((temp) => temp !== item),
+		setData({
+			...data,
+			temperaments: data.temperaments.filter((temp) => temp !== item),
 		});
 	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		dispatch(
-			createData({
-				...form,
-				life_span: `${form.life_span} years`,
+			updateData({
+				...data,
+				id,
+				life_span: `${data.life_span} years`,
 			})
 		);
 		alert("The new dog was added successfully");
-		history.push("./");
-		setForm({
-			name: "",
-			height_min: "",
-			height_max: "",
-			weight_min: "",
-			weight_max: "",
-			life_span: "",
-			image: "",
-			temperaments: [],
-		});
+		history.push("../");
+		setData({});
 	};
 
 	useEffect(() => {
@@ -116,7 +111,7 @@ const Create = () => {
 						<label htmlFor="name">Name:</label>
 						<input
 							type="text"
-							value={form.name}
+							value={data.name}
 							name="name"
 							required=""
 							placeholder="Name, example (akita)...."
@@ -130,7 +125,7 @@ const Create = () => {
 						<label htmlFor="image">Image:</label>
 						<input
 							type="text"
-							value={form.image}
+							value={data.image}
 							name="image"
 							required=""
 							placeholder="Image...."
@@ -148,7 +143,7 @@ const Create = () => {
 							name="life_span"
 							required=""
 							placeholder="Life, example (10 - 12)...."
-							value={form.life_span}
+							value={data.life_span}
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
@@ -163,7 +158,7 @@ const Create = () => {
 						<input
 							type="text"
 							autoComplete="off"
-							value={form.height_min}
+							value={data.height_min}
 							name="height_min"
 							placeholder="Min height..."
 							onBlur={(event) => handleOnBlur(event)}
@@ -177,7 +172,7 @@ const Create = () => {
 						<label htmlFor="height_max">Max Height </label>
 						<input
 							type="text"
-							value={form.height_max}
+							value={data.height_max}
 							name="height_max"
 							autoComplete="off"
 							placeholder="Max height..."
@@ -192,7 +187,7 @@ const Create = () => {
 						<label htmlFor="weight_min">Min Weight </label>
 						<input
 							type="text"
-							value={form.weight_min}
+							value={data.weight_min}
 							name="weight_min"
 							autoComplete="off"
 							placeholder="Min weight..."
@@ -207,7 +202,7 @@ const Create = () => {
 						<label htmlFor="weight_max">Max Weight </label>
 						<input
 							type="text"
-							value={form.weight_max}
+							value={data.weight_max}
 							name="weight_max"
 							autoComplete="off"
 							placeholder="Max weight..."
@@ -236,14 +231,15 @@ const Create = () => {
 						</select>
 					</div>
 					<div className={css.select_values}>
-						{form.temperaments.map((el) => (
-							<p
-								className={css.selected_values}
-								key={el}
-								onClick={() => handleDelete(el)}>
-								{`${el}`}
-							</p>
-						))}
+						{data.temperaments[0].length !== 0 &&
+							data.temperaments.map((el) => (
+								<p
+									className={css.selected_values}
+									key={el}
+									onClick={() => handleDelete(el)}>
+									{`${el}`}
+								</p>
+							))}
 					</div>
 				</div>
 
@@ -263,7 +259,7 @@ const Create = () => {
 							type="submit"
 							form="form"
 							className={`${css.button_send} ${css.blue}`}>
-							<span>Create</span>
+							<span>Update</span>
 							<svg viewBox="0 0 13 10" height="10px" width="15px">
 								<path d="M1,5 L11,5"></path>
 								<polyline points="8 1 12 5 8 9"></polyline>
@@ -276,4 +272,4 @@ const Create = () => {
 	);
 };
 
-export default Create;
+export default Put;

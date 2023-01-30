@@ -17,6 +17,8 @@ import {
 	ORDER_NAME,
 	ORDER_WEIGHT,
 	DETAIL_TARGET,
+	UPDATE_DATA,
+	DELETE_DATA,
 } from "../types";
 
 /**
@@ -26,7 +28,7 @@ import {
  */
 export const getAllDogs = () => async (dispatch) => {
 	try {
-		const response = await axios.get(`/dogs`, {});
+		const response = await axios.get(`/dogs`);
 		return dispatch({
 			type: GET_ALL_DOGS,
 			payload: response.data,
@@ -43,7 +45,7 @@ export const getAllDogs = () => async (dispatch) => {
  */
 export const getTemperaments = () => async (dispatch) => {
 	try {
-		const response = await axios.get(`/temperaments`, {});
+		const response = await axios.get(`/temperaments`);
 		return dispatch({
 			type: GET_TEMPERAMENTS,
 			payload: response.data,
@@ -61,7 +63,7 @@ export const getTemperaments = () => async (dispatch) => {
  */
 export const getName = (name) => async (dispatch) => {
 	try {
-		const response = await axios.get(`/dogs?name=${name}`, {});
+		const response = await axios.get(`/dogs?name=${name}`);
 		return dispatch({
 			type: GET_NAME,
 			payload: response.data,
@@ -95,7 +97,7 @@ export const getName = (name) => async (dispatch) => {
  */
 export const detailTarget = (id) => async (dispatch) => {
 	try {
-		const response = await axios.get(`/dogs/${id}`, {});
+		const response = await axios.get(`/dogs/${id}`);
 		return dispatch({
 			type: DETAIL_TARGET,
 			payload: response.data.shift(),
@@ -130,7 +132,7 @@ export const detailTarget = (id) => async (dispatch) => {
  */
 export const getFilterData = (value) => async (dispatch) => {
 	try {
-		const response = await axios.get(`/dogs`, {});
+		const response = await axios.get(`/dogs`);
 		return dispatch({
 			type: GET_FILTER_DATA,
 			payload: response.data.filter(
@@ -167,7 +169,7 @@ export const getFilterTemp = (value) => async (dispatch) => {
  * @returns The return value is the dispatch function.
  */
 export const orderName = (value) => async (dispatch) => {
-	const response = await axios.get(`/dogs`, {});
+	const response = await axios.get(`/dogs`);
 	return dispatch({
 		type: ORDER_NAME,
 		payload:
@@ -184,7 +186,7 @@ export const orderName = (value) => async (dispatch) => {
  * @returns a function.
  */
 export const orderWeight = (value) => async (dispatch) => {
-	const response = await axios.get(`/dogs`, {});
+	const response = await axios.get(`/dogs`);
 	const arrayData = response.data.map((obj) => {
 		const { weight_min, weight_max } = obj;
 		return {
@@ -210,9 +212,51 @@ export const createData = (formData) => async () => {
 		const response = await axios.post("/dogs", formData, {
 			headers: { "Content-Type": "application/json" },
 		});
-		console.log(response.data.message);
 		return response;
 	} catch (error) {
 		console.log(error);
+	}
+};
+
+/**
+ * It takes in a dataUpdate object, and then uses axios to make a PUT request to the server, sending
+ * the dataUpdate object as the body of the request.
+ *
+ * The server then updates the database with the new data, and sends back the updated data as a
+ * response.
+ *
+ * The updated data is then dispatched to the reducer, which updates the state.
+ * @param dataUpdate - {
+ * @returns The response.data is being returned.
+ */
+export const updateData = (dataUpdate) => async (dispatch) => {
+	console.log(dataUpdate);
+	try {
+		const response = await axios.put(`/dogs/${dataUpdate.id}`, dataUpdate, {
+			headers: { "Content-Type": "application/json" },
+		});
+		return dispatch({
+			type: UPDATE_DATA,
+			payload: response.data,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+/**
+ * It's an async function that takes in an id, makes a delete request to the server, and then
+ * dispatches an action to the reducer.
+ * @param id - the id of the dog you want to delete
+ */
+export const deleteData = (id) => async (dispatch) => {
+	try {
+		await axios.delete(`/dogs/${id}`);
+		dispatch({
+			type: DELETE_DATA,
+			payload: id,
+		});
+	} catch (error) {
+		console.error(error);
 	}
 };

@@ -5,6 +5,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import DogsList from "./components/DogsList/DogsList";
 import DetailCard from "./components/Details/DetailCard";
 import Create from "./components/Create/Create";
+import Put from "./components/Put/Put";
 /** Import stule */
 import css from "./App.module.css";
 
@@ -15,8 +16,9 @@ function App() {
 				<Switch>
 					<Route exact path="/" component={LandingPage} />
 					<Route exact path="/dogs" component={DogsList} />
-					<Route exact path="/dogs/:id" component={DetailCard} />
-					<Route exact path="/create" component={Create} />
+					<Route exact path="/dogs/details/:id" component={DetailCard} />
+					<Route exact path="/dogs/create" component={Create} />
+					<Route exact path="/dogs/update/:id" component={Put} />
 				</Switch>
 			</Router>
 		</div>

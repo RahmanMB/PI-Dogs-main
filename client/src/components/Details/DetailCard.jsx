@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 /** Import files */
-import { detailTarget } from "../../redux/actions";
+import { detailTarget, deleteData } from "../../redux/actions";
 /** Import styles */
 import css from "./DetailCard.module.css";
 import LoaderImg from "../Loaders/LoaderImg";
@@ -13,14 +13,23 @@ const DetailCard = () => {
 	const target = useSelector((state) => state.target);
 	const [loading, setLoading] = useState(false);
 
-	let { id } = useParams();
+	const { id } = useParams();
+
+	const handleDeleteClick = () => {
+		deleteData(id)(dispatch);
+		alert("Has been successfully eliminated.");
+	};
 
 	useEffect(() => {
 		setLoading(true);
-		dispatch(detailTarget(id));
-		setTimeout(() => {
-			setLoading(false);
-		}, 1200);
+		dispatch(detailTarget(id))
+			.then(() => {
+				setLoading(false);
+			})
+			.catch((error) => {
+				console.error(error);
+				setLoading(false);
+			});
 	}, [dispatch, id]);
 
 	const {
@@ -70,6 +79,25 @@ const DetailCard = () => {
 								Life: <span>{life_span}</span>
 							</p>
 						</div>
+						{322 > Number(id) ? (
+							<div></div>
+						) : (
+							<div className={css.put__delete}>
+								<Link to={`/dogs/update/${id}`}>
+									<button
+										className={`${css.put__delete_button} ${css.red__btn}`}>
+										<span>Put</span>
+									</button>
+								</Link>
+								<Link to="/dogs">
+									<button
+										className={`${css.put__delete_button} ${css.blue_btn}`}
+										onClick={() => handleDeleteClick()}>
+										<span style={{ color: "#920949d2" }}>Delete</span>
+									</button>
+								</Link>
+							</div>
+						)}
 					</div>
 
 					<div className={css.right_detail}>
