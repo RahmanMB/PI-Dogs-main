@@ -14,6 +14,7 @@ import {
 import SearchEngine from "./SearchEngine";
 import Card from "../Details/Card";
 import Paged from "./Paged";
+import DontData from "./DontData";
 import image from "../../assets/images/DogList.png";
 import LoaderImg from "../Loaders/LoaderImg";
 /** Import styles */
@@ -145,18 +146,22 @@ const DogsList = () => {
 					</div>
 
 					<div className={css.right}>
-						{currentDogs?.map(
-							({ id, name, image, temperaments, weight_min, weight_max }) => (
-								<Card
-									key={id}
-									id={id}
-									name={name}
-									image={image}
-									temperaments={temperaments}
-									weight_min={weight_min}
-									weight_max={weight_max}
-								/>
+						{currentDogs.length ? (
+							currentDogs.map(
+								({ id, name, image, temperaments, weight_min, weight_max }) => (
+									<Card
+										key={id}
+										id={id}
+										name={name}
+										image={image}
+										temperaments={temperaments}
+										weight_min={weight_min}
+										weight_max={weight_max}
+									/>
+								)
 							)
+						) : (
+							<DontData />
 						)}
 					</div>
 				</div>

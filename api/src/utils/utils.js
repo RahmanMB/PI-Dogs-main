@@ -92,9 +92,13 @@ const getAllDogs = async () => {
 				isNaN(dog.height_max)
 			) {
 				if (!dog.height_min || isNaN(dog.height_min)) {
-					dog.height_min = (Number(dog.height_max) - 3.22).toString();
+					dog.height_min = (Number(dog.height_max) - 3.22)
+						.toFixed(2)
+						.toString();
 				} else {
-					dog.height_max = (Number(dog.height_min) + 3.22).toString();
+					dog.height_max = (Number(dog.height_min) + 3.22)
+						.toFixed(2)
+						.toString();
 				}
 			}
 			return dog;

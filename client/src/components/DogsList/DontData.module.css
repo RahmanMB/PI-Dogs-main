@@ -1,0 +1,20 @@
+.container__div {
+	background-image: url(../../assets/images/3371471.jpg);
+	background-position: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-radius: 1.618rem;
+	position: fixed;
+	right: 30px;
+	width: 890px;
+	height: 730px;
+}
+
+.container__message {
+	color: rgba(122, 117, 117, 0.521);
+	font-family: "MontserratBold", sans-serif;
+	font-size: 2rem;
+	position: relative;
+	top: 10%;
+	left: 20%;
+}
