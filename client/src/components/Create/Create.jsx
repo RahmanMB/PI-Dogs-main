@@ -26,6 +26,7 @@ const Create = () => {
 		life_span: "",
 		temperaments: "",
 		image: "",
+		changes: false,
 	});
 	const [form, setForm] = useState({
 		name: "",
@@ -59,10 +60,14 @@ const Create = () => {
 	const handleSelect = (event) => {
 		const { value } = event.target;
 		setSelectedValue(value);
-		setForm({
-			...form,
-			temperaments: [...form.temperaments, value],
-		});
+		if (!form.temperaments.includes(value)) {
+			setForm({
+				...form,
+				temperaments: [...form.temperaments, value],
+			});
+		} else {
+			alert("The temperament already exists");
+		}
 	};
 
 	const handleDelete = (item) => {
@@ -106,48 +111,46 @@ const Create = () => {
 	}, [setButton, errors]);
 
 	return (
-		<form action="" id="form" onSubmit={handleSubmit} className={css.container}>
+		<form action='' id='form' onSubmit={handleSubmit} className={css.container}>
 			<div className={css.left_container}>
-				<div className={css.top_container}>
-					{imageUrl && <img src={imageUrl} alt="load dog profile" />}
-				</div>
+				<div className={css.top_container}>{imageUrl && <img src={imageUrl} alt='load dog profile' />}</div>
 				<div className={css.buttom_container}>
 					<div className={css.la_in}>
-						<label htmlFor="name">Name:</label>
+						<label htmlFor='name'>Name:</label>
 						<input
-							type="text"
+							type='text'
 							value={form.name}
-							name="name"
-							required=""
-							placeholder="Name, example (akita)...."
+							name='name'
+							required=''
+							placeholder='Name, example (akita)....'
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
-							autoComplete="off"
+							autoComplete='off'
 						/>
 						{errors.name && <p className={css.err}>{errors.name}</p>}
 					</div>
 					<div className={css.la_in}>
-						<label htmlFor="image">Image:</label>
+						<label htmlFor='image'>Image:</label>
 						<input
-							type="text"
+							type='text'
 							value={form.image}
-							name="image"
-							required=""
-							placeholder="Image...."
+							name='image'
+							required=''
+							placeholder='Image....'
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
-							autoComplete="off"
+							autoComplete='off'
 						/>
 						{errors.image && <p className={css.err}>{errors.image}</p>}
 					</div>
 					<div className={css.la_in}>
-						<label htmlFor="life_span">Life: </label>
+						<label htmlFor='life_span'>Life: </label>
 						<input
-							type="text"
-							autoComplete="off"
-							name="life_span"
-							required=""
-							placeholder="Life, example (10 - 12)...."
+							type='text'
+							autoComplete='off'
+							name='life_span'
+							required=''
+							placeholder='Life, example (10 - 12)....'
 							value={form.life_span}
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
@@ -159,74 +162,63 @@ const Create = () => {
 			<div className={css.right_continer}>
 				<div className={css.top_content}>
 					<div className={css.label_input}>
-						<label htmlFor="height_min">Min Height </label>
+						<label htmlFor='height_min'>Min Height </label>
 						<input
-							type="text"
-							autoComplete="off"
+							type='text'
+							autoComplete='off'
 							value={form.height_min}
-							name="height_min"
-							placeholder="Min height..."
+							name='height_min'
+							placeholder='Min height...'
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
-						{errors.height_min && (
-							<p className={css.err}>{errors.height_min}</p>
-						)}
+						{errors.height_min && <p className={css.err}>{errors.height_min}</p>}
 					</div>
 					<div className={css.label_input}>
-						<label htmlFor="height_max">Max Height </label>
+						<label htmlFor='height_max'>Max Height </label>
 						<input
-							type="text"
+							type='text'
 							value={form.height_max}
-							name="height_max"
-							autoComplete="off"
-							placeholder="Max height..."
+							name='height_max'
+							autoComplete='off'
+							placeholder='Max height...'
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
-						{errors.height_max && (
-							<p className={css.err}>{errors.height_max}</p>
-						)}
+						{errors.height_max && <p className={css.err}>{errors.height_max}</p>}
 					</div>
 					<div className={css.label_input}>
-						<label htmlFor="weight_min">Min Weight </label>
+						<label htmlFor='weight_min'>Min Weight </label>
 						<input
-							type="text"
+							type='text'
 							value={form.weight_min}
-							name="weight_min"
-							autoComplete="off"
-							placeholder="Min weight..."
+							name='weight_min'
+							autoComplete='off'
+							placeholder='Min weight...'
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
-						{errors.weight_min && (
-							<p className={css.err}>{errors.weight_min}</p>
-						)}
+						{errors.weight_min && <p className={css.err}>{errors.weight_min}</p>}
 					</div>
 					<div className={css.label_input}>
-						<label htmlFor="weight_max">Max Weight </label>
+						<label htmlFor='weight_max'>Max Weight </label>
 						<input
-							type="text"
+							type='text'
 							value={form.weight_max}
-							name="weight_max"
-							autoComplete="off"
-							placeholder="Max weight..."
+							name='weight_max'
+							autoComplete='off'
+							placeholder='Max weight...'
 							onBlur={(event) => handleOnBlur(event)}
 							onChange={(event) => handleChange(event)}
 						/>
-						{errors.weight_max && (
-							<p className={css.err}>{errors.weight_max}</p>
-						)}
+						{errors.weight_max && <p className={css.err}>{errors.weight_max}</p>}
 					</div>
 				</div>
 
 				<div className={css.mid_content}>
 					<div className={css.select}>
 						<p>Temperaments</p>
-						<select
-							value={selectedValue}
-							required
-							onChange={(event) => handleSelect(event)}>
+						<select value={selectedValue} required onChange={(event) => handleSelect(event)}>
 							<option disabled>Temperaments</option>
 							{temperaments.map((d) => (
 								<option value={d.name} key={d.name + Math.random()}>
@@ -237,10 +229,7 @@ const Create = () => {
 					</div>
 					<div className={css.select_values}>
 						{form.temperaments.map((el) => (
-							<p
-								className={css.selected_values}
-								key={el}
-								onClick={() => handleDelete(el)}>
+							<p className={css.selected_values} key={el} onClick={() => handleDelete(el)}>
 								{`${el}`}
 							</p>
 						))}
@@ -249,24 +238,20 @@ const Create = () => {
 
 				<div className={css.bottom_content}>
 					<div className={css.cancel_create}>
-						<Link to="/dogs">
+						<Link to='/dogs'>
 							<button className={`${css.button_send} ${css.red}`}>
 								<span>Cancel</span>
-								<svg viewBox="0 0 13 10" height="10px" width="15px">
-									<path d="M1,5 L11,5"></path>
-									<polyline points="8 1 12 5 8 9"></polyline>
+								<svg viewBox='0 0 13 10' height='10px' width='15px'>
+									<path d='M1,5 L11,5'></path>
+									<polyline points='8 1 12 5 8 9'></polyline>
 								</svg>
 							</button>
 						</Link>
-						<button
-							disabled={button}
-							type="submit"
-							form="form"
-							className={`${css.button_send} ${css.blue}`}>
+						<button disabled={button} type='submit' form='form' className={`${css.button_send} ${css.blue}`}>
 							<span>Create</span>
-							<svg viewBox="0 0 13 10" height="10px" width="15px">
-								<path d="M1,5 L11,5"></path>
-								<polyline points="8 1 12 5 8 9"></polyline>
+							<svg viewBox='0 0 13 10' height='10px' width='15px'>
+								<path d='M1,5 L11,5'></path>
+								<polyline points='8 1 12 5 8 9'></polyline>
 							</svg>
 						</button>
 					</div>
